@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paperka | Komunitas Pemuda Pemudi Desa</title>
+    <!-- Google Fonts: Outfit for that modern, bubbly Gen Z vibe -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header & Navbar -->
+    <header>
+        <div class="logo">
+            <span class="dot"></span> Paperka.
+        </div>
+        <button id="menu-btn" class="menu-toggle" aria-label="Buka Menu">
+            <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+    </header>
+
+    <!-- Sidebar Menu -->
+    <nav id="sidebar" class="sidebar">
+        <button id="close-btn" class="close-btn" aria-label="Tutup Menu">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+        <ul class="nav-links">
+            <li><a href="#perkenalan" class="nav-item">Perkenalan 👋</a></li>
+            <li><a href="#dokumentasi" class="nav-item">Dokumentasi 📸</a></li>
+            <li><a href="#anggota" class="nav-item">Anggota 🤝</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <p>Join the movement.</p>
+        </div>
+    </nav>
+
+    <!-- Overlay for Sidebar -->
+    <div id="overlay" class="overlay"></div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Section: Perkenalan -->
+        <section id="perkenalan" class="hero">
+            <div class="hero-content">
+                <div class="badge">🔥 Komunitas Desa Masa Kini</div>
+                <h1>Wadah Kreatif<br><span class="highlight">Anak Muda</span> Desa.</h1>
+                <p>Kenalin, kita <strong>Paperka</strong>. Lebih dari sekadar organisasi, kita adalah pergerakan Gen Z di desa yang bikin karya, kolaborasi, dan aksi nyata buat lingkungan. Gak cuma rebahan, kita bawa perubahan!</p>
+                <div class="cta-group">
+                    <a href="#dokumentasi" class="btn btn-primary">Lihat Aksi Kita</a>
+                    <a href="#footer" class="btn btn-outline">Say Hi!</a>
+                </div>
+            </div>
+            <div class="hero-graphics">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+            </div>
+        </section>
+
+        <!-- Section: Dokumentasi -->
+        <section id="dokumentasi" class="dokumentasi">
+            <div class="section-header">
+                <h2>Our <span class="highlight">Moments</span> 📸</h2>
+                <p>Sedikit cerita dari apa yang udah kita kerjain bareng-bareng.</p>
+            </div>
+            <div class="bento-grid">
+                <div class="bento-item img-1">
+                    <div class="bento-overlay">Gotong Royong Vol.1</div>
+                </div>
+                <div class="bento-item img-2">
+                    <div class="bento-overlay">Festival Desa</div>
+                </div>
+                <div class="bento-item img-3">
+                    <div class="bento-overlay">Rapat Santai</div>
+                </div>
+                <div class="bento-item img-4">
+                    <div class="bento-overlay">Penghijauan</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Anggota -->
+        <section id="anggota" class="anggota">
+            <div class="section-header text-center">
+                <h2>Meet The <span class="highlight">Squad</span> 🤝</h2>
+                <p>Para penggerak di balik layar Paperka.</p>
+            </div>
+            <div class="team-grid">
+                <!-- Member 1 -->
+                <div class="team-card">
+                    <div class="avatar av-1"></div>
+                    <h3>Bagas</h3>
+                    <p class="role">Ketua Umum</p>
+                </div>
+                <!-- Member 2 -->
+                <div class="team-card">
+                    <div class="avatar av-2"></div>
+                    <h3>Siti</h3>
+                    <p class="role">Sekretaris Jenderal</p>
+                </div>
+                <!-- Member 3 -->
+                <div class="team-card">
+                    <div class="avatar av-3"></div>
+                    <h3>Rizky</h3>
+                    <p class="role">Kepala Kreatif</p>
+                </div>
+                <!-- Member 4 -->
+                <div class="team-card">
+                    <div class="avatar av-4"></div>
+                    <h3>Dinda</h3>
+                    <p class="role">Humas & Sosmed</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h2>Paperka.</h2>
+                <p>Mengubah energi muda menjadi karya nyata untuk desa.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Explore</h3>
+                <ul>
+                    <li><a href="#perkenalan">Home</a></li>
+                    <li><a href="#dokumentasi">Gallery</a></li>
+                    <li><a href="#anggota">Team</a></li>
+                </ul>
+            </div>
+            <div class="footer-social">
+                <h3>Connect With Us</h3>
+                <div class="social-icons">
+                    <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+                <div class="contact-info mt-3">
+                    <p><i class="fa-regular fa-envelope"></i> hello@paperka.id</p>
+                    <p><i class="fa-brands fa-whatsapp"></i> +62 812 3456 7890</p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Paperka Community. All rights reserved. Crafted with <i class="fa-solid fa-heart" style="color: #429b65;"></i> in Desa.</p>
+        </div>
+    </footer>
+
+    <!-- Link to external JS -->
+    <script src="script.js"></script>
+</body>
+</html>
