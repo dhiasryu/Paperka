@@ -3,27 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paperka - Organisasi Desa</title>
-    <!-- Koneksi ke file CSS -->
+    <title>Paperka - V2</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Menggunakan font modern 'Plus Jakarta Sans' dari Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
 
-    <!-- Navigasi -->
+    <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo">PAPERKA.</a>
-            
-            <!-- Tombol Hamburger untuk Mobile -->
             <div class="menu-toggle" id="mobile-menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
             </div>
-
-            <!-- Menu Link -->
             <ul class="nav-menu">
                 <li><a href="#" class="nav-links active">Home</a></li>
                 <li><a href="#tentang" class="nav-links">Tentang</a></li>
@@ -33,69 +29,48 @@
         </div>
     </nav>
 
-    <!-- Konten Utama -->
+    <!-- Hero Section Full Width -->
+    <header class="hero-full">
+        <div class="hero-overlay"></div>
+        <h1 class="hero-title interactive-hover">PAPERKA</h1>
+    </header>
+
+    <!-- Marquee / Running Text -->
+    <div class="marquee-container">
+        <div class="marquee-text">
+            PEMUDA BERKARYA DESA BERDAYA ✦ KREATIVITAS TANPA BATAS ✦ INOVASI DARI DESA UNTUK DUNIA ✦
+            PEMUDA BERKARYA DESA BERDAYA ✦ KREATIVITAS TANPA BATAS ✦ INOVASI DARI DESA UNTUK DUNIA ✦
+        </div>
+    </div>
+
     <main>
-        <!-- Section 1: Hero (Gambar Anggota) -->
-        <section class="hero hidden">
-            <div class="hero-content">
-                <h1>Halo, Kami <span>Paperka!</span></h1>
-                <p>Menggerakkan perubahan dari desa untuk dunia yang lebih baik.</p>
-            </div>
-            <div class="hero-image-wrapper">
-                <!-- Ganti link src di bawah dengan link/file foto asli anggota Paperka -->
-                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Anggota Komunitas Paperka" class="hero-image">
-            </div>
-        </section>
-
-        <!-- Section 2: Penjelasan Organisasi -->
+        <!-- Tentang -->
         <section id="tentang" class="about hidden">
-            <div class="about-card">
+            <div class="about-card interactive-hover">
                 <h2>Apa itu Paperka?</h2>
-                <p>
-                    Paperka adalah wadah kreativitas, kolaborasi, dan pergerakan pemuda desa. 
-                    Kami berfokus pada pengembangan potensi lokal, pelestarian lingkungan, dan 
-                    pemberdayaan masyarakat melalui kegiatan yang modern, adaptif, dan berdampak nyata.
-                </p>
-                <a href="#kegiatan" class="btn-primary">Lihat Kegiatan Kami</a>
+                <p>Wadah kreativitas, kolaborasi, dan pergerakan pemuda desa. Kami berfokus pada pengembangan potensi lokal, pelestarian lingkungan, dan pemberdayaan masyarakat melalui kegiatan yang modern, adaptif, dan berdampak nyata.</p>
             </div>
         </section>
 
-        <!-- Section 3: Lokasi Maps -->
+        <!-- Lokasi -->
         <section id="lokasi" class="location hidden">
             <h2>Titik Kumpul Kami</h2>
-            <p>Datang dan sapa kami secara langsung di markas Paperka.</p>
-            <div class="map-container">
-                <!-- Ini adalah iframe Google Maps asli. Kamu bisa menggantinya dengan tag <img> jika hanya ingin berupa gambar statis -->
-                <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126907.03463870853!2d106.74904791334057!3d-6.229728025219597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e945e34b9d%3A0x100c5e82dd4b820!2sJakarta!5e0!3m2!1sid!2sid!4v1691234567890!5m2!1sid!2sid" 
-                    width="100%" 
-                    height="400" 
-                    style="border:0;" 
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+            <div class="map-container interactive-hover">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126907.03463870853!2d106.74904791334057!3d-6.229728025219597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e945e34b9d%3A0x100c5e82dd4b820!2sJakarta!5e0!3m2!1sid!2sid!4v1691234567890!5m2!1sid!2sid" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <h3>PAPERKA.</h3>
             <p>Pemuda Berkarya, Desa Berdaya.</p>
-            <div class="social-links">
-                <a href="#">Instagram</a>
-                <a href="#">TikTok</a>
-                <a href="#">YouTube</a>
-            </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Organisasi Desa Paperka. Dibuat dengan 💚.</p>
+            <p>&copy; 2026 Organisasi Desa Paperka.</p>
         </div>
     </footer>
 
-    <!-- Koneksi ke file JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
