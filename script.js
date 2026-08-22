@@ -1,30 +1,38 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const menuBtn = document.getElementById('menu-btn');
-    const closeBtn = document.getElementById('close-btn');
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('overlay');
-    const navLinks = document.querySelectorAll('.nav-links a');
+// 1. Logika untuk Mobile Menu (Hamburger Toggle)
+const menuToggle = document.querySelector('#mobile-menu');
+const navMenu = document.querySelector('.nav-menu');
+const navLinks = document.querySelectorAll('.nav-links');
 
-    // Fungsi untuk membuka menu
-    const openMenu = () => {
-        sidebar.classList.add('active');
-        overlay.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Kunci scroll di background
-    };
+// Membuka dan menutup menu ketika hamburger di klik
+menuToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+});
 
-    // Fungsi untuk menutup menu
-    const closeMenu = () => {
-        sidebar.classList.remove('active');
-        overlay.classList.remove('active');
-        document.body.style.overflow = 'auto'; // Kembalikan scroll
-    };
-
-    menuBtn.addEventListener('click', openMenu);
-    closeBtn.addEventListener('click', closeMenu);
-    overlay.addEventListener('click', closeMenu);
-
-    // Tutup menu otomatis jika salah satu link di dalam menu diklik
-    navLinks.forEach(link => {
-        link.addEventListener('click', closeMenu);
+// Menutup menu otomatis ketika salah satu link diklik (khusus mobile)
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
     });
 });
+
+// 2. Logika untuk Animasi Scroll (Gen Z Smooth Reveal)
+// Kita menggunakan IntersectionObserver agar elemen muncul saat masuk ke area layar
+const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.15 // Elemen akan muncul ketika 15% bagiannya terlihat di layar
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            // Berhenti memantau elemen setelah muncul (agar animasi tidak berulang-ulang)
+            observer.unobserve(entry.target); 
+        }
+    });
+}, observerOptions);
+
+// Mengambil semua elemen yang memiliki class 'hidden' di HTML
+const hiddenElements = document.querySelectorAll('.hidden');
+hiddenElements.forEach((el) => observer.observe(el));
