@@ -1,37 +1,35 @@
-// Custom Cursor
-const cursor = document.querySelector('.cursor');
-const interactiveElements = document.querySelectorAll('a, button, .interactive-hover, .menu-toggle');
+// 1. Custom Cursor Script
+const cursor = document.querySelector('.custom-cursor');
+const hoverTargets = document.querySelectorAll('.hover-target, a, button, input');
 
 document.addEventListener('mousemove', (e) => {
+    // Memindahkan kursor custom sesuai posisi mouse
     cursor.style.left = e.clientX + 'px';
     cursor.style.top = e.clientY + 'px';
 });
 
-// Menambahkan efek hover pada elemen interaktif
-interactiveElements.forEach(el => {
-    el.addEventListener('mouseenter', () => cursor.classList.add('hover-effect'));
-    el.addEventListener('mouseleave', () => cursor.classList.remove('hover-effect'));
+// Efek membesar saat hover pada link/tombol
+hoverTargets.forEach(target => {
+    target.addEventListener('mouseenter', () => cursor.classList.add('expand'));
+    target.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
 });
 
-// Perbaikan Mobile Menu Navigasi
-const menuToggle = document.getElementById('mobile-menu');
+// 2. Mobile Menu Toggle
+const menuToggle = document.querySelector('#mobile-menu');
 const navMenu = document.querySelector('.nav-menu');
 const navLinks = document.querySelectorAll('.nav-links');
 
 menuToggle.addEventListener('click', () => {
     navMenu.classList.toggle('active');
-    menuToggle.classList.toggle('is-active');
 });
 
-// Menutup menu saat link di klik (khusus mobile)
 navLinks.forEach(link => {
     link.addEventListener('click', () => {
         navMenu.classList.remove('active');
-        menuToggle.classList.remove('is-active');
     });
 });
 
-// Smooth Reveal Animation untuk elemen saat di scroll
+// 3. Scroll Animation (Intersection Observer)
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
