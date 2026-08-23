@@ -4,100 +4,98 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Paperka - Organisasi Desa</title>
+    <!-- Koneksi ke CSS -->
     <link rel="stylesheet" href="style.css">
+    <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor"></div>
 
-    <!-- Navbar -->
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+
+    <!-- Navigasi -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo">PAPERKA.</a>
+            
             <div class="menu-toggle" id="mobile-menu">
                 <span class="bar"></span>
                 <span class="bar"></span>
                 <span class="bar"></span>
             </div>
+
             <ul class="nav-menu">
-                <li><a href="#" class="nav-links active">Home</a></li>
-                <li><a href="#tentang" class="nav-links">Tentang</a></li>
-                <li><a href="#lokasi" class="nav-links">Lokasi</a></li>
-                <li><a href="#" class="nav-links">Kegiatan</a></li>
-                <li><a href="#" class="nav-links">Dokumentasi</a></li>
+                <li><a href="#" class="nav-links active hover-target">Home</a></li>
+                <li><a href="#tentang" class="nav-links hover-target">Tentang</a></li>
+                <li><a href="#kegiatan" class="nav-links hover-target">Kegiatan</a></li>
+                <li><a href="#dokumentasi" class="nav-links hover-target">Dokumentasi</a></li>
             </ul>
         </div>
     </nav>
 
-    <!-- Hero Section Full Width (Centered Title) -->
-    <header class="hero-full">
-        <div class="hero-overlay"></div>
-        <h1 class="hero-title interactive-hover">PAPERKA</h1>
-    </header>
-
-    <!-- Marquee / Running Text -->
-    <div class="marquee-container">
-        <div class="marquee-text">
-            PEMUDA BERKARYA DESA BERDAYA ✦ KREATIVITAS TANPA BATAS ✦ INOVASI DARI DESA UNTUK DUNIA ✦
-            PEMUDA BERKARYA DESA BERDAYA ✦ KREATIVITAS TANPA BATAS ✦ INOVASI DARI DESA UNTUK DUNIA ✦
-        </div>
-    </div>
-
+    <!-- Konten Utama -->
     <main>
-        <!-- Tentang -->
-        <section id="tentang" class="about hidden">
-            <div class="about-card interactive-hover">
-                <h2>Apa itu Paperka?</h2>
-                <p>Wadah kreativitas, kolaborasi, dan pergerakan pemuda desa. Kami berfokus pada pengembangan potensi lokal, pelestarian lingkungan, dan pemberdayaan masyarakat melalui kegiatan yang modern, adaptif, dan berdampak nyata.</p>
+        <!-- Hero Section Full Width (Gambar & Teks di Tengah) -->
+        <section class="hero">
+            <!-- Overlay gelap agar teks terbaca -->
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h1 class="hero-title">PAPERKA</h1>
+                <p class="hero-subtitle">Menggerakkan perubahan dari desa untuk dunia.</p>
             </div>
         </section>
 
-        <!-- Lokasi -->
+        <!-- Marquee Running Text -->
+        <div class="marquee-container">
+            <div class="marquee-content">
+                <span>PEMUDA BERKARYA DESA BERDAYA ✦ KREATIF INOVATIF ADAPTIF ✦ PAPERKA 2026 ✦ KOLABORASI TANPA BATAS ✦ </span>
+                <span>PEMUDA BERKARYA DESA BERDAYA ✦ KREATIF INOVATIF ADAPTIF ✦ PAPERKA 2026 ✦ KOLABORASI TANPA BATAS ✦ </span>
+            </div>
+        </div>
+
+        <!-- Section Tentang -->
+        <section id="tentang" class="about hidden">
+            <div class="about-card">
+                <h2>Apa itu Paperka?</h2>
+                <p>
+                    Paperka adalah wadah kreativitas, kolaborasi, dan pergerakan pemuda desa. 
+                    Kami berfokus pada pengembangan potensi lokal, pelestarian lingkungan, dan 
+                    pemberdayaan masyarakat melalui kegiatan yang modern, adaptif, dan berdampak nyata.
+                </p>
+                <a href="#kegiatan" class="btn-primary hover-target">Lihat Kegiatan Kami</a>
+            </div>
+        </section>
+
+        <!-- Section Lokasi Maps -->
         <section id="lokasi" class="location hidden">
             <h2>Titik Kumpul Kami</h2>
-            <div class="map-container interactive-hover">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126907.03463870853!2d106.74904791334057!3d-6.229728025219597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e945e34b9d%3A0x100c5e82dd4b820!2sJakarta!5e0!3m2!1sid!2sid!4v1691234567890!5m2!1sid!2sid" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <p>Datang dan sapa kami secara langsung di markas Paperka.</p>
+            <div class="map-container hover-target">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126907.03463870853!2d106.74904791334057!3d-6.229728025219597!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3e945e34b9d%3A0x100c5e82dd4b820!2sJakarta!5e0!3m2!1sid!2sid!4v1691234567890!5m2!1sid!2sid" 
+                    width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy">
+                </iframe>
             </div>
         </section>
     </main>
-
-    <!-- Footer Modern -->
+    <!-- Footer -->
     <footer>
-        <div class="footer-container">
-            <div class="footer-col">
-                <h3>PAPERKA.</h3>
-                <p>Wadah kreativitas, kolaborasi, dan pergerakan pemuda desa untuk menciptakan dampak positif bagi masyarakat dan lingkungan sekitar.</p>
-            </div>
-            <div class="footer-col">
-                <h4>Navigasi Cepat</h4>
-                <ul>
-                    <li><a href="#" class="interactive-hover">Home</a></li>
-                    <li><a href="#tentang" class="interactive-hover">Tentang</a></li>
-                    <li><a href="#lokasi" class="interactive-hover">Lokasi</a></li>
-                    <li><a href="#" class="interactive-hover">Kegiatan</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h4>Kontak Kami</h4>
-                <p>Email: halo@paperka.desa.id</p>
-                <p>Telepon: +62 812 3456 7890</p>
-                <p>Alamat: Balai Desa Kreatif, Jawa Barat</p>
-            </div>
-            <div class="footer-col">
-                <h4>Media Sosial</h4>
-                <ul class="social-icons">
-                    <li><a href="#" class="interactive-hover">Instagram</a></li>
-                    <li><a href="#" class="interactive-hover">TikTok</a></li>
-                    <li><a href="#" class="interactive-hover">YouTube</a></li>
-                </ul>
+        <div class="footer-content">
+            <h3>PAPERKA.</h3>
+            <p>Pemuda Berkarya, Desa Berdaya.</p>
+            <div class="social-links">
+                <a href="#" class="hover-target">Instagram</a>
+                <a href="#" class="hover-target">TikTok</a>
+                <a href="#" class="hover-target">YouTube</a>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Organisasi Desa Paperka. Dibuat dengan 💚 oleh pemuda desa.</p>
+            <p>&copy; 2026 Organisasi Desa Paperka. Dibuat dengan 💚.</p>
         </div>
     </footer>
 
+    <!-- Koneksi ke JavaScript -->
     <script src="script.js"></script>
 </body>
 </html>
