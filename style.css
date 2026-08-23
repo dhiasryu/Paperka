@@ -141,8 +141,8 @@ body {
 
 .hero-title {
     /* Menggunakan clamp agar ukuran besar tapi tidak over pada HP */
-    font-size: clamp(2.2rem, 5.5vw + 1rem, 4.8rem); 
-    font-weight: 700;
+    font-size: clamp(2.2rem, 6.5vw + 1rem, 5.8rem); 
+    font-weight: 800;
     color: var(--white);
     letter-spacing: normal;
     text-shadow: 0 10px 30px rgba(0,0,0,0.5);
