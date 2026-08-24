@@ -525,4 +525,16 @@ footer {
     .about-card { padding: 2rem; }
     .ai-widget-container { bottom: 20px; right: 20px; }
     .ai-chat-box { width: 300px; height: 400px; }
+    /* --- ENHANCEMENT TOMBOL THEME TOGGLE --- */
+
+/* Memastikan ikon dapat berotasi dan membesar dengan sempurna */
+.theme-icon {
+    display: inline-block;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Efek saat tombol ditekan (klik) */
+.theme-toggle-btn:active {
+    transform: scale(0.95);
+        }
 }
