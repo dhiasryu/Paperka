@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dhiasryu.github.io/Paperka/sitemap.xml
