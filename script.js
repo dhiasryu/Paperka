@@ -2,32 +2,34 @@
 const cursor = document.querySelector('.custom-cursor');
 const hoverTargets = document.querySelectorAll('.hover-target, a, button, input');
 
-document.addEventListener('mousemove', (e) => {
-    // Memindahkan kursor custom sesuai posisi mouse
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-});
+if (cursor) {
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
 
-// Efek membesar saat hover pada link/tombol
-hoverTargets.forEach(target => {
-    target.addEventListener('mouseenter', () => cursor.classList.add('expand'));
-    target.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
-});
+    hoverTargets.forEach(target => {
+        target.addEventListener('mouseenter', () => cursor.classList.add('expand'));
+        target.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
+    });
+}
 
 // 2. Mobile Menu Toggle
 const menuToggle = document.querySelector('#mobile-menu');
 const navMenu = document.querySelector('.nav-menu');
 const navLinks = document.querySelectorAll('.nav-links');
 
-menuToggle.addEventListener('click', () => {
-    navMenu.classList.toggle('active');
-});
-
-navLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        navMenu.classList.remove('active');
+if (menuToggle && navMenu) {
+    menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
     });
-});
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+        });
+    });
+}
 
 // 3. Scroll Animation (Intersection Observer)
 const observer = new IntersectionObserver((entries) => {
@@ -40,12 +42,11 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
 
-// 4. Dark & Light Mode Switcher (Dengan Animasi & Local Storage)
+// 4. Dark & Light Mode Switcher
 const themeToggleBtn = document.querySelector('#themeToggle');
 const themeIcon = document.querySelector('.theme-icon');
 const themeText = document.querySelector('.theme-text');
 
-// Fungsi untuk menerapkan tema
 function applyTheme(theme) {
     if (theme === 'dark') {
         document.documentElement.setAttribute('data-theme', 'dark');
@@ -60,22 +61,18 @@ function applyTheme(theme) {
     }
 }
 
-// Mengecek preferensi tema tersimpan
 const savedTheme = localStorage.getItem('paperka-theme');
 if (savedTheme) {
     applyTheme(savedTheme);
 } else {
-    // Menyesuaikan preferensi sistem bawaan pengguna jika belum ada pilihan tersimpan
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     applyTheme(prefersDark ? 'dark' : 'light');
 }
 
-// Event listener klik tombol switch dengan efek animasi interaktif
 if (themeToggleBtn) {
     themeToggleBtn.addEventListener('click', () => {
         const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
 
-        // Efek animasi putar 360 derajat & membesar pada ikon
         if (themeIcon) {
             themeIcon.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
             themeIcon.style.transform = 'rotate(360deg) scale(1.4)';
@@ -85,11 +82,11 @@ if (themeToggleBtn) {
             }, 400);
         }
 
-        // Jalankan pergantian tema
         applyTheme(isDark ? 'light' : 'dark');
     });
+} // <- Penutup yang sebelumnya hilang
 
-    // 5. Back to Top Button Logic
+// 5. Back to Top Button Logic
 const backToTopBtn = document.querySelector('#backToTop');
 
 if (backToTopBtn) {
@@ -121,8 +118,10 @@ if (lightbox && galleryItems.length > 0) {
             const title = item.querySelector('.gallery-overlay h3')?.innerText || '';
             const desc = item.querySelector('.gallery-overlay p')?.innerText || '';
 
-            lightboxImg.src = img.src;
-            lightboxCaption.innerHTML = `<strong>${title}</strong><br><span style="opacity:0.8; font-size:0.95rem;">${desc}</span>`;
+            if (lightboxImg && img) lightboxImg.src = img.src;
+            if (lightboxCaption) {
+                lightboxCaption.innerHTML = `<strong>${title}</strong><br><span style="opacity:0.8; font-size:0.95rem;">${desc}</span>`;
+            }
             lightbox.classList.add('active');
         });
     });
@@ -134,4 +133,4 @@ if (lightbox && galleryItems.length > 0) {
     lightbox.addEventListener('click', (e) => {
         if (e.target === lightbox) closeLightbox();
     });
-}
+            }
