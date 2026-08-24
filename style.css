@@ -1,9 +1,9 @@
 /* --- VARIABEL & RESET --- */
 :root {
-    --primary: #61816c;
-    --primary-dark: #4b6654;
-    --bg: #f7f9f7;
-    --text: #2d3748;
+    --primary: #5d9e88; /* Warna utama baru dari Anda */
+    --primary-dark: #111111; /* Hitam pekat untuk efek hover dan footer */
+    --bg: #ffffff; /* Putih bersih untuk background utama */
+    --text: #111111; /* Hitam pekat untuk teks agar kontras */
     --white: #ffffff;
 }
 
@@ -210,7 +210,7 @@ main {
 .about-card p, .location p {
     font-size: 1.2rem;
     line-height: 1.8;
-    color: #555;
+    color: #333333; /* Diubah menjadi abu-abu sangat gelap agar kontras di atas putih */
     margin-bottom: 2.5rem;
 }
 
@@ -225,9 +225,9 @@ main {
     transition: all 0.3s;
 }
 .btn-primary:hover {
-    background: var(--primary-dark);
+    background: var(--primary-dark); /* Tombol menjadi hitam saat di hover */
     transform: translateY(-5px);
-    box-shadow: 0 15px 25px rgba(97, 129, 108, 0.3);
+    box-shadow: 0 15px 25px rgba(93, 158, 136, 0.3); /* Menyesuaikan RGB dari #5d9e88 */
 }
 
 .map-container {
@@ -308,7 +308,7 @@ footer {
 
 .page-header p {
     font-size: 1.2rem;
-    color: #666;
+    color: #333333; /* Disesuaikan agar selaras dengan tema gelap terang */
     margin-top: 10px;
 }
 
@@ -369,4 +369,4 @@ footer {
 
 .gallery-item:hover .gallery-overlay {
     bottom: 0; /* Teks muncul dari bawah */
-    }
+}
