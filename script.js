@@ -88,4 +88,50 @@ if (themeToggleBtn) {
         // Jalankan pergantian tema
         applyTheme(isDark ? 'light' : 'dark');
     });
+
+    // 5. Back to Top Button Logic
+const backToTopBtn = document.querySelector('#backToTop');
+
+if (backToTopBtn) {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            backToTopBtn.classList.add('show');
+        } else {
+            backToTopBtn.classList.remove('show');
+        }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
+
+// 6. Lightbox Modal Logic (Halaman Dokumentasi)
+const galleryItems = document.querySelectorAll('.gallery-item');
+const lightbox = document.querySelector('#lightbox');
+
+if (lightbox && galleryItems.length > 0) {
+    const lightboxImg = document.querySelector('#lightbox-img');
+    const lightboxCaption = document.querySelector('#lightbox-caption');
+    const lightboxClose = document.querySelector('.lightbox-close');
+
+    galleryItems.forEach(item => {
+        item.addEventListener('click', () => {
+            const img = item.querySelector('img');
+            const title = item.querySelector('.gallery-overlay h3')?.innerText || '';
+            const desc = item.querySelector('.gallery-overlay p')?.innerText || '';
+
+            lightboxImg.src = img.src;
+            lightboxCaption.innerHTML = `<strong>${title}</strong><br><span style="opacity:0.8; font-size:0.95rem;">${desc}</span>`;
+            lightbox.classList.add('active');
+        });
+    });
+
+    const closeLightbox = () => lightbox.classList.remove('active');
+
+    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+    });
 }
