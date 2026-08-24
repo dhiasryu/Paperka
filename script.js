@@ -133,4 +133,10 @@ if (lightbox && galleryItems.length > 0) {
     lightbox.addEventListener('click', (e) => {
         if (e.target === lightbox) closeLightbox();
     });
-            }
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && lightbox && lightbox.classList.contains('active')) {
+        lightbox.classList.remove('active');
+    }
+});
+}
