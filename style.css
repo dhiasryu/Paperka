@@ -144,6 +144,15 @@ body {
     transform: translateY(-2px);
 }
 
+.theme-icon {
+    display: inline-block;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.theme-toggle-btn:active {
+    transform: scale(0.95);
+}
+
 .menu-toggle {
     display: none;
     flex-direction: column;
@@ -357,63 +366,7 @@ main {
 .gallery-item:hover img { transform: scale(1.1); }
 .gallery-item:hover .gallery-overlay { bottom: 0; }
 
-/* --- FOOTER --- */
-footer {
-    background: var(--bg-card);
-    border-top: 1px solid var(--border-color);
-    color: var(--text-main);
-    text-align: center;
-    padding: 4rem 5% 2rem;
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
-}
-
-.footer-content h3 { font-size: 2.5rem; margin-bottom: 1rem; font-weight: 900; color: var(--primary); }
-.social-links { margin: 2rem 0; }
-.social-links a { color: var(--text-main); text-decoration: none; margin: 0 15px; font-weight: 600; font-size: 1.1rem; transition: color 0.3s; }
-.social-links a:hover { color: var(--primary); }
-.footer-bottom { margin-top: 3rem; font-size: 0.9rem; color: var(--text-muted); }
-
-/* --- ANIMASI SCROLL --- */
-.hidden {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-}
-
-.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* --- RESPONSIVE MOBILE --- */
-@media screen and (max-width: 768px) {
-    .custom-cursor { display: none; }
-    * { cursor: auto; }
-    .menu-toggle { display: flex; z-index: 1001; }
-    
-    .nav-menu {
-        position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
-        background: var(--bg-card); flex-direction: column; justify-content: center;
-        align-items: center; transition: 0.5s ease-in-out;
-    }
-    
-    .nav-menu.active { right: 0; }
-    .nav-links { font-size: 1.5rem; margin: 15px 0; }
-    .about-card { padding: 2rem; }
-    /* --- ENHANCEMENT TOMBOL THEME TOGGLE --- */
-
-/* Memastikan ikon dapat berotasi dan membesar dengan sempurna */
-.theme-icon {
-    display: inline-block;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-/* Efek saat tombol ditekan (klik) */
-.theme-toggle-btn:active {
-    transform: scale(0.95);
-        }
-    /* --- BACK TO TOP BUTTON --- */
+/* --- BACK TO TOP BUTTON --- */
 .back-to-top {
     position: fixed;
     bottom: 30px;
@@ -507,4 +460,49 @@ footer {
 .lightbox-close:hover {
     color: var(--primary-light);
 }
+
+/* --- FOOTER --- */
+footer {
+    background: var(--bg-card);
+    border-top: 1px solid var(--border-color);
+    color: var(--text-main);
+    text-align: center;
+    padding: 4rem 5% 2rem;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
 }
+
+.footer-content h3 { font-size: 2.5rem; margin-bottom: 1rem; font-weight: 900; color: var(--primary); }
+.social-links { margin: 2rem 0; }
+.social-links a { color: var(--text-main); text-decoration: none; margin: 0 15px; font-weight: 600; font-size: 1.1rem; transition: color 0.3s; }
+.social-links a:hover { color: var(--primary); }
+.footer-bottom { margin-top: 3rem; font-size: 0.9rem; color: var(--text-muted); }
+
+/* --- ANIMASI SCROLL --- */
+.hidden {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media screen and (max-width: 768px) {
+    .custom-cursor { display: none; }
+    * { cursor: auto; }
+    .menu-toggle { display: flex; z-index: 1001; }
+    
+    .nav-menu {
+        position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
+        background: var(--bg-card); flex-direction: column; justify-content: center;
+        align-items: center; transition: 0.5s ease-in-out;
+    }
+    
+    .nav-menu.active { right: 0; }
+    .nav-links { font-size: 1.5rem; margin: 15px 0; }
+    .about-card { padding: 2rem; }
+    }
