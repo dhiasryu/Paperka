@@ -171,7 +171,7 @@ body {
     position: relative;
     width: 100%;
     height: 100vh;
-    background-image: src("asset/bg.jpg");
+    background-image: url('asset/bg.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
