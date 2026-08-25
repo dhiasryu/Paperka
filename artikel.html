@@ -28,21 +28,34 @@
 </head>
 <body>
 
-    <!-- ================= HEADER / NAVBAR ================= -->
-    <header class="navbar">
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+
+    <!-- Navigasi -->
+    <nav class="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo hover-target">
-                <!--img src="asset/Icon.jpeg" alt="Logo Paperka" class="logo-img"-->
-                <span>PAPERKA</span>
-            </a>
-            <nav class="nav-menu">
-                <a href="index.html" class="nav-link hover-target">Beranda</a>
-                <a href="dokumentasi.html" class="nav-link hover-target">Dokumentasi</a>
-                <a href="artikel.html" class="nav-link active hover-target">Artikel</a>
-                <a href="index.html#lokasi" class="nav-link hover-target">Titik Kumpul</a>
-            </nav>
+            <a href="index.html" class="logo">PAPERKA.</a>
+            
+            <div class="menu-toggle" id="mobile-menu" aria-label="Buka Menu Navigasi" role="button" tabindex="0">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-links hover-target">Home</a></li>
+                <li><a href="dokumentasi.html" class="nav-links active hover-target">Dokumentasi</a></li>
+                <li><a href="artikel.html" class="nav-links active hover-target">Artikel</a></li>
+                <!-- Tombol Switch Dark/Light Mode -->
+                <li>
+                    <button class="theme-toggle-btn hover-target" id="themeToggle" aria-label="Toggle Theme">
+                        <span class="theme-icon">🌙</span>
+                        <span class="theme-text">Dark</span>
+                    </button>
+                </li>
+            </ul>
         </div>
-    </header>
+    </nav>
 
     <!-- ================= HERO ARTIKEL ================= -->
     <section class="article-hero">
