@@ -38,20 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================================================
-    // 3. SCROLL ANIMATION (INTERSECTION OBSERVER)
-    // ==========================================================================
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('show');
-            }
-        });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
-
-    // ==========================================================================
-    // 4. DARK & LIGHT MODE SWITCHER (DATA-THEME)
+    // 3. DARK & LIGHT MODE SWITCHER
     // ==========================================================================
     const themeToggleBtn = document.querySelector('#themeToggle');
     const themeIcon = document.querySelector('.theme-icon');
@@ -82,25 +69,21 @@ document.addEventListener('DOMContentLoaded', () => {
     if (themeToggleBtn) {
         themeToggleBtn.addEventListener('click', () => {
             const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-
             if (themeIcon) {
                 themeIcon.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
                 themeIcon.style.transform = 'rotate(360deg) scale(1.4)';
-
                 setTimeout(() => {
                     themeIcon.style.transform = 'rotate(0deg) scale(1)';
                 }, 400);
             }
-
             applyTheme(isDark ? 'light' : 'dark');
         });
     }
 
     // ==========================================================================
-    // 5. BACK TO TOP BUTTON LOGIC
+    // 4. BACK TO TOP BUTTON LOGIC
     // ==========================================================================
     const backToTopBtn = document.querySelector('#backToTop');
-
     if (backToTopBtn) {
         window.addEventListener('scroll', () => {
             if (window.scrollY > 300) {
@@ -116,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================================================
-    // 6. DATA ARTIKEL LENGKAP
+    // 5. DATA ARTIKEL BARU
     // ==========================================================================
     const articlesData = [
         {
@@ -170,6 +153,124 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     // ==========================================================================
+    // 6. LOGIKA PAGINASI & FILTER ARTIKEL
+    // ==========================================================================
+    const itemsPerPage = 5;
+    let currentPage = 1;
+    let currentCategory = 'all';
+    let searchQuery = '';
+
+    const articleCards = document.querySelectorAll('.article-card');
+    const paginationContainer = document.getElementById('pagination');
+
+    function getFilteredCards() {
+        return Array.from(articleCards).filter(card => {
+            const cardCategory = card.getAttribute('data-category');
+            const titleText = (card.querySelector('h2, h3')?.textContent || '').toLowerCase();
+            const excerptText = (card.querySelector('.excerpt')?.textContent || '').toLowerCase();
+
+            const matchesCategory = (currentCategory === 'all' || cardCategory === currentCategory);
+            const matchesSearch = titleText.includes(searchQuery) || excerptText.includes(searchQuery);
+
+            return matchesCategory && matchesSearch;
+        });
+    }
+
+    function renderArticles() {
+        const filteredCards = getFilteredCards();
+        const totalPages = Math.ceil(filteredCards.length / itemsPerPage) || 1;
+
+        if (currentPage > totalPages) currentPage = totalPages;
+
+        articleCards.forEach(card => card.style.display = 'none');
+
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+        const visibleCards = filteredCards.slice(startIndex, endIndex);
+
+        visibleCards.forEach(card => {
+            card.style.display = card.classList.contains('featured') ? 'grid' : 'flex';
+        });
+
+        renderPaginationControls(totalPages);
+    }
+
+    function renderPaginationControls(totalPages) {
+        if (!paginationContainer) return;
+        paginationContainer.innerHTML = '';
+
+        if (totalPages <= 1) return;
+
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'page-btn hover-target';
+        prevBtn.textContent = '← Prev';
+        prevBtn.disabled = currentPage === 1;
+        prevBtn.addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                renderArticles();
+                scrollToArticles();
+            }
+        });
+        paginationContainer.appendChild(prevBtn);
+
+        for (let i = 1; i <= totalPages; i++) {
+            const pageBtn = document.createElement('button');
+            pageBtn.className = `page-btn hover-target ${i === currentPage ? 'active' : ''}`;
+            pageBtn.textContent = i;
+            pageBtn.addEventListener('click', () => {
+                currentPage = i;
+                renderArticles();
+                scrollToArticles();
+            });
+            paginationContainer.appendChild(pageBtn);
+        }
+
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'page-btn hover-target';
+        nextBtn.textContent = 'Next →';
+        nextBtn.disabled = currentPage === totalPages;
+        nextBtn.addEventListener('click', () => {
+            if (currentPage < totalPages) {
+                currentPage++;
+                renderArticles();
+                scrollToArticles();
+            }
+        });
+        paginationContainer.appendChild(nextBtn);
+    }
+
+    function scrollToArticles() {
+        const target = document.querySelector('.article-container');
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+
+    const searchInput = document.getElementById('search-input');
+    const filterBtns = document.querySelectorAll('.filter-btn');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            currentCategory = btn.getAttribute('data-category');
+            currentPage = 1;
+            renderArticles();
+        });
+    });
+
+    if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+            searchQuery = e.target.value.toLowerCase().trim();
+            currentPage = 1;
+            renderArticles();
+        });
+    }
+
+    renderArticles();
+
+    // ==========================================================================
     // 7. MODAL READER (JENDELA BACA ARTIKEL)
     // ==========================================================================
     const modal = document.getElementById('article-modal');
@@ -207,9 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
 
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
-            closeModal();
-        }
+        if (e.key === 'Escape' && modal && modal.classList.contains('active')) closeModal();
     });
 
     document.addEventListener('click', (e) => {
@@ -218,50 +317,4 @@ document.addEventListener('DOMContentLoaded', () => {
             openArticle(articleId);
         }
     });
-
-    // ==========================================================================
-    // 8. FILTER KATEGORI & PENCARIAN
-    // ==========================================================================
-    const searchInput = document.getElementById('search-input');
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const articleCards = document.querySelectorAll('.article-card');
-
-    let currentCategory = 'all';
-    let searchQuery = '';
-
-    function filterArticles() {
-        articleCards.forEach(card => {
-            const cardCategory = card.getAttribute('data-category');
-            const titleElement = card.querySelector('h2, h3');
-            const excerptElement = card.querySelector('.excerpt');
-
-            const titleText = titleElement ? titleElement.textContent.toLowerCase() : '';
-            const excerptText = excerptElement ? excerptElement.textContent.toLowerCase() : '';
-
-            const matchesCategory = (currentCategory === 'all' || cardCategory === currentCategory);
-            const matchesSearch = titleText.includes(searchQuery) || excerptText.includes(searchQuery);
-
-            if (matchesCategory && matchesSearch) {
-                card.style.display = card.classList.contains('featured') ? 'grid' : 'flex';
-            } else {
-                card.style.display = 'none';
-            }
-        });
-    }
-
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            currentCategory = btn.getAttribute('data-category');
-            filterArticles();
-        });
-    });
-
-    if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-            searchQuery = e.target.value.toLowerCase().trim();
-            filterArticles();
-        });
-    }
 });
