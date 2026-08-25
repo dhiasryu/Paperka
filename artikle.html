@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artikel & Wawasan - Paperka Kandangan</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="asset/Icon.jpeg">
+
+    <!-- SEO Meta -->
+    <meta name="description" content="Kumpulan artikel, cerita inspiratif, dan gagasan pergerakan pemuda Desa Kandangan.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://dhiasryu.github.io/Paperka/artikel.html">
+
+    <!-- Open Graph Meta -->
+    <meta property="og:title" content="Artikel & Wawasan - Paperka Kandangan">
+    <meta property="og:description" content="Kumpulan artikel, cerita inspiratif, dan gagasan pergerakan pemuda Desa Kandangan.">
+    <meta property="og:image" content="https://dhiasryu.github.io/Paperka/asset/Icon.jpeg">
+    <meta property="og:url" content="https://dhiasryu.github.io/Paperka/artikel.html">
+    <meta property="og:type" content="website">
+
+    <!-- Koneksi ke CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ================= HEADER / NAVBAR ================= -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo hover-target">
+                <img src="asset/Icon.jpeg" alt="Logo Paperka" class="logo-img">
+                <span>PAPERKA</span>
+            </a>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-link hover-target">Beranda</a>
+                <a href="dokumentasi.html" class="nav-link hover-target">Dokumentasi</a>
+                <a href="artikel.html" class="nav-link active hover-target">Artikel</a>
+                <a href="index.html#lokasi" class="nav-link hover-target">Titik Kumpul</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ================= HERO ARTIKEL ================= -->
+    <section class="article-hero">
+        <div class="hero-content">
+            <span class="badge">Ruang Baca Paperka</span>
+            <h1>Kabar, Cerita & Wawasan Pemuda</h1>
+            <p>Gagasan, pengalaman, dan rekam jejak langkah pergerakan pemuda Desa Kandangan.</p>
+            
+            <!-- Filter & Pencarian -->
+            <div class="search-filter-box">
+                <input type="text" id="search-input" placeholder="Cari judul atau topik artikel..." class="search-input">
+                <div class="category-buttons">
+                    <button class="filter-btn active" data-category="all">Semua</button>
+                    <button class="filter-btn" data-category="kegiatan">Kegiatan</button>
+                    <button class="filter-btn" data-category="opini">Gagasan</button>
+                    <button class="filter-btn" data-category="desa">Potensi Desa</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= UTAMA: DAFTAR ARTIKEL ================= -->
+    <main class="article-container">
+
+        <!-- Artikel Utama / Featured Article -->
+        <section class="featured-article">
+            <article class="article-card featured" data-id="1" data-category="kegiatan">
+                <div class="card-image">
+                    <img src="asset/Icon.jpeg" alt="Gambar Artikel Utama" loading="lazy">
+                    <span class="category-tag">Kegiatan Utama</span>
+                </div>
+                <div class="card-body">
+                    <div class="article-meta">
+                        <span class="date">📅 25 Agustus 2026</span>
+                        <span class="read-time">⏱️ 4 min baca</span>
+                    </div>
+                    <h2>Mengubah Ruang Kosong Desa Menjadi Wadah Kreativitas Pemuda Kandangan</h2>
+                    <p class="excerpt">Bagaimana inisiatif kolektif pemuda berhasil menyulap area tidak terpakai menjadi ruang kolaborasi produktif untuk generasi muda desa...</p>
+                    <button class="btn-read-more read-btn hover-target" data-id="1">Baca Selengkapnya &rarr;</button>
+                </div>
+            </article>
+        </section>
+
+        <!-- Grid Kartu Artikel -->
+        <section class="article-grid" id="article-grid">
+
+            <!-- Kartu Artikel 1 -->
+            <article class="article-card" data-id="2" data-category="desa">
+                <div class="card-image">
+                    <img src="asset/Icon.jpeg" alt="Potensi Desa" loading="lazy">
+                    <span class="category-tag">Potensi Desa</span>
+                </div>
+                <div class="card-body">
+                    <div class="article-meta">
+                        <span class="date">📅 20 Agustus 2026</span>
+                        <span class="read-time">⏱️ 3 min baca</span>
+                    </div>
+                    <h3>Mengangkat Olahan Pangan Lokal ke Pasar Digital</h3>
+                    <p class="excerpt">Pendampingan branding dan kemasan UMKM desa oleh pemuda Kandangan untuk memperluas jangkauan pasar.</p>
+                    <button class="btn-read-more read-btn hover-target" data-id="2">Baca Artikel &rarr;</button>
+                </div>
+            </article>
+
+            <!-- Kartu Artikel 2 -->
+            <article class="article-card" data-id="3" data-category="opini">
+                <div class="card-image">
+                    <img src="asset/Icon.jpeg" alt="Gagasan Pemuda" loading="lazy">
+                    <span class="category-tag">Gagasan</span>
+                </div>
+                <div class="card-body">
+                    <div class="article-meta">
+                        <span class="date">📅 15 Agustus 2026</span>
+                        <span class="read-time">⏱️ 5 min baca</span>
+                    </div>
+                    <h3>Menjaga Tradisi di Tengah Arus Digitalisasi Desa</h3>
+                    <p class="excerpt">Refleksi tentang pentingnya mempertahankan nilai gotong royong dan kebudayaan lokal di era serba modern.</p>
+                    <button class="btn-read-more read-btn hover-target" data-id="3">Baca Artikel &rarr;</button>
+                </div>
+            </article>
+
+            <!-- Kartu Artikel 3 -->
+            <article class="article-card" data-id="4" data-category="kegiatan">
+                <div class="card-image">
+                    <img src="asset/Icon.jpeg" alt="Aksi Hijau" loading="lazy">
+                    <span class="category-tag">Kegiatan</span>
+                </div>
+                <div class="card-body">
+                    <div class="article-meta">
+                        <span class="date">📅 10 Agustus 2026</span>
+                        <span class="read-time">⏱️ 3 min baca</span>
+                    </div>
+                    <h3>Aksi Hijau Pemuda: Penanaman Pohon & Pengelolaan Sampah</h3>
+                    <p class="excerpt">Langkah nyata menjaga kelestarian lingkungan lingkungan sekitar tempat tinggal demi masa depan yang lebih sehat.</p>
+                    <button class="btn-read-more read-btn hover-target" data-id="4">Baca Artikel &rarr;</button>
+                </div>
+            </article>
+
+        </section>
+    </main>
+
+    <!-- ================= MODAL / JENDELA BACA ARTIKEL LENGKAP ================= -->
+    <div class="article-modal" id="article-modal" aria-hidden="true">
+        <div class="modal-overlay" id="modal-overlay"></div>
+        <div class="modal-content">
+            <button class="modal-close hover-target" id="modal-close" aria-label="Tutup Artikel">&times;</button>
+            
+            <!-- Isi Artikel Lengkap (Diisi via JavaScript) -->
+            <div class="modal-body" id="modal-body-content">
+                <!-- Template isi artikel akan masuk ke sini -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <h3>PAPERKA</h3>
+                <p>Pemuda Berkarya, Desa Berdaya. Wadah kolaborasi dan aksi nyata pemuda Desa Kandangan.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Navigasi</h4>
+                <ul>
+                    <li><a href="index.html" class="hover-target">Beranda</a></li>
+                    <li><a href="dokumentasi.html" class="hover-target">Dokumentasi</a></li>
+                    <li><a href="artikel.html" class="hover-target">Artikel</a></li>
+                    <li><a href="index.html#lokasi" class="hover-target">Titik Kumpul</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-social">
+                <h4>Media Sosial</h4>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/username_kalian" target="_blank" rel="noopener noreferrer" class="hover-target">Instagram</a>
+                    <a href="https://www.tiktok.com/@username_kalian" target="_blank" rel="noopener noreferrer" class="hover-target">TikTok</a>
+                    <a href="https://www.youtube.com/@channel_kalian" target="_blank" rel="noopener noreferrer" class="hover-target">YouTube</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Paperka Kandangan. Hak Cipta Dilindungi.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
