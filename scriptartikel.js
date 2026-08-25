@@ -1,7 +1,122 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // ==========================================================================
-    // 1. DATA ARTIKEL LENGKAP
+    // 1. CUSTOM CURSOR
+    // ==========================================================================
+    const cursor = document.querySelector('.custom-cursor');
+    const hoverTargets = document.querySelectorAll('.hover-target, a, button, input');
+
+    if (cursor) {
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        hoverTargets.forEach(target => {
+            target.addEventListener('mouseenter', () => cursor.classList.add('expand'));
+            target.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
+        });
+    }
+
+    // ==========================================================================
+    // 2. MOBILE MENU TOGGLE
+    // ==========================================================================
+    const menuToggle = document.querySelector('#mobile-menu');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-links');
+
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+    }
+
+    // ==========================================================================
+    // 3. SCROLL ANIMATION (INTERSECTION OBSERVER)
+    // ==========================================================================
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.hidden').forEach((el) => observer.observe(el));
+
+    // ==========================================================================
+    // 4. DARK & LIGHT MODE SWITCHER (DATA-THEME)
+    // ==========================================================================
+    const themeToggleBtn = document.querySelector('#themeToggle');
+    const themeIcon = document.querySelector('.theme-icon');
+    const themeText = document.querySelector('.theme-text');
+
+    function applyTheme(theme) {
+        if (theme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+            if (themeIcon) themeIcon.textContent = '☀️';
+            if (themeText) themeText.textContent = 'Light';
+            localStorage.setItem('paperka-theme', 'dark');
+        } else {
+            document.documentElement.removeAttribute('data-theme');
+            if (themeIcon) themeIcon.textContent = '🌙';
+            if (themeText) themeText.textContent = 'Dark';
+            localStorage.setItem('paperka-theme', 'light');
+        }
+    }
+
+    const savedTheme = localStorage.getItem('paperka-theme');
+    if (savedTheme) {
+        applyTheme(savedTheme);
+    } else {
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        applyTheme(prefersDark ? 'dark' : 'light');
+    }
+
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+
+            if (themeIcon) {
+                themeIcon.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+                themeIcon.style.transform = 'rotate(360deg) scale(1.4)';
+
+                setTimeout(() => {
+                    themeIcon.style.transform = 'rotate(0deg) scale(1)';
+                }, 400);
+            }
+
+            applyTheme(isDark ? 'light' : 'dark');
+        });
+    }
+
+    // ==========================================================================
+    // 5. BACK TO TOP BUTTON LOGIC
+    // ==========================================================================
+    const backToTopBtn = document.querySelector('#backToTop');
+
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // ==========================================================================
+    // 6. DATA ARTIKEL LENGKAP
     // ==========================================================================
     const articlesData = [
         {
@@ -55,17 +170,16 @@ document.addEventListener('DOMContentLoaded', () => {
     ];
 
     // ==========================================================================
-    // 2. MODAL READER (JENDELA BACA)
+    // 7. MODAL READER (JENDELA BACA ARTIKEL)
     // ==========================================================================
     const modal = document.getElementById('article-modal');
     const modalContent = document.getElementById('modal-body-content');
     const modalClose = document.getElementById('modal-close');
     const modalOverlay = document.getElementById('modal-overlay');
 
-    // Fungsi Buka Artikel
     function openArticle(id) {
         const article = articlesData.find(item => item.id === parseInt(id));
-        if (!article) return;
+        if (!article || !modal || !modalContent) return;
 
         modalContent.innerHTML = `
             <div class="article-meta">
@@ -80,27 +194,24 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
 
         modal.classList.add('active');
-        document.body.style.overflow = 'hidden'; // Matikan scroll background
+        document.body.style.overflow = 'hidden';
     }
 
-    // Fungsi Tutup Artikel
     function closeModal() {
+        if (!modal) return;
         modal.classList.remove('active');
-        document.body.style.overflow = 'auto'; // Hidupkan scroll background
+        document.body.style.overflow = 'auto';
     }
 
-    // Event Listener Tutup Modal
     if (modalClose) modalClose.addEventListener('click', closeModal);
     if (modalOverlay) modalOverlay.addEventListener('click', closeModal);
 
-    // Tutup dengan tombol Escape di Keyboard
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('active')) {
+        if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
             closeModal();
         }
     });
 
-    // Delegasi Event Klik Tombol Baca
     document.addEventListener('click', (e) => {
         if (e.target.classList.contains('read-btn')) {
             const articleId = e.target.getAttribute('data-id');
@@ -109,7 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ==========================================================================
-    // 3. FITUR FILTER KATEGORI & PENCARIAN
+    // 8. FILTER KATEGORI & PENCARIAN
     // ==========================================================================
     const searchInput = document.getElementById('search-input');
     const filterBtns = document.querySelectorAll('.filter-btn');
@@ -121,8 +232,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function filterArticles() {
         articleCards.forEach(card => {
             const cardCategory = card.getAttribute('data-category');
-            const titleText = card.querySelector('h2, h3').textContent.toLowerCase();
-            const excerptText = card.querySelector('.excerpt').textContent.toLowerCase();
+            const titleElement = card.querySelector('h2, h3');
+            const excerptElement = card.querySelector('.excerpt');
+
+            const titleText = titleElement ? titleElement.textContent.toLowerCase() : '';
+            const excerptText = excerptElement ? excerptElement.textContent.toLowerCase() : '';
 
             const matchesCategory = (currentCategory === 'all' || cardCategory === currentCategory);
             const matchesSearch = titleText.includes(searchQuery) || excerptText.includes(searchQuery);
@@ -135,7 +249,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Event Filter Kategori
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             filterBtns.forEach(b => b.classList.remove('active'));
@@ -145,7 +258,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Event Pencarian Real-time
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
             searchQuery = e.target.value.toLowerCase().trim();
