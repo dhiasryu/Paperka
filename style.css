@@ -776,6 +776,11 @@ body.no-scroll {
     gap: 30px;
 }
 
+.article-container,
+.article-grid {
+    min-height: 500px; /* Menjaga tinggi area artikel agar tidak runtuh saat halaman berpindah */
+}
+
 /* --- 4. Detail Komponen Dalam Kartu --- */
 .card-image {
     position: relative;
