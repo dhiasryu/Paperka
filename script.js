@@ -155,3 +155,31 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// ==========================================================================
+    // 7. Animasi pergantian halaman
+    // ==========================================================================
+// A. Tampilkan halaman dengan animasi masuk
+document.body.classList.add('page-loaded');
+
+// B. Tangkap klik pada semua tautan/link internal
+const internalLinks = document.querySelectorAll('a[href]:not([target="_blank"]):not([href^="#"]):not([href^="javascript:"])');
+
+internalLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        const targetUrl = link.getAttribute('href');
+
+        // Pastikan tautan bukan tautan luar / email
+        if (targetUrl && !targetUrl.startsWith('http') && !targetUrl.startsWith('mailto:')) {
+            e.preventDefault(); // Tahan dulu navigasi langsung
+
+            // Jalankan animasi keluar
+            document.body.classList.add('page-exiting');
+
+            // Pindah halaman setelah animasi selesai (400ms)
+            setTimeout(() => {
+                window.location.href = targetUrl;
+            }, 400);
+        }
+    });
+});
