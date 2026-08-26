@@ -8,6 +8,7 @@
     --bg-main: #f8f9fa;
     --bg-card: #ffffff;
     --bg-glass: rgba(255, 255, 255, 0.75);
+    --bg-glass-drawer: rgba(255, 255, 255, 0.92); /* Background Menu Mobile Terang */
     --text-main: #121413;
     --text-muted: #525b56;
     --border-color: rgba(97, 129, 108, 0.15);
@@ -24,6 +25,7 @@
     --bg-main: #111312;
     --bg-card: #1a1d1b;
     --bg-glass: rgba(17, 19, 18, 0.8);
+    --bg-glass-drawer: rgba(26, 29, 27, 0.92); /* Background Menu Mobile Gelap */
     --text-main: #f0f4f2;
     --text-muted: #a3b0a7;
     --border-color: rgba(97, 129, 108, 0.25);
@@ -522,26 +524,37 @@ footer {
     .custom-cursor { display: none; }
     * { cursor: auto; }
     
-    /* Z-index 1002 memastikan tombol garis tiga selalu berada DI ATAS menu */
     .menu-toggle { 
         display: flex; 
-        z-index: 1000; 
+        z-index: 1010 !important; 
     }
     
+    /* Panel Menu Navigasi (Tengah Vertikal) */
     .nav-menu {
         position: fixed; 
         top: 0; 
         right: -100%; 
-        width: 60%;           /* Mengambil sekitar setengah layar */
-        min-width: 240px;     /* Batas minimal lebar di HP kecil */
-        max-width: 300px;     /* Batas maksimal lebar agar tidak memenuhi layar */
+        width: 70%;
+        min-width: 260px;
+        max-width: 320px;
         height: 100vh;
-        background: var(--bg-card); 
-        box-shadow: -10px 0 30px var(--shadow-color);
+        
+        /* Glassmorphism Otomatis Mode Terang & Gelap */
+        background: var(--bg-glass-drawer);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-left: 1px solid var(--border-color);
+        box-shadow: -15px 0 35px var(--shadow-color);
+
+        /* Tata Letak Kembali ke Tengah Vertikal */
+        display: flex;
         flex-direction: column; 
-        justify-content: center;
-        align-items: center; 
-        transition: right 0.4s ease;        /* Berada tepat di bawah .menu-toggle */
+        justify-content: center; /* Posisikan menu di tengah vertikal */
+        align-items: stretch;
+        padding: 30px 24px;
+        gap: 12px;               /* Jarak antar tombol menu */
+        
+        transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         z-index: 1005;
     }
     
@@ -549,14 +562,47 @@ footer {
         right: 0; 
     }
 
+    .nav-menu li {
+        width: 100%;
+        list-style: none;
+    }
+
+    /* Styling Tombol Menu */
     .nav-links { 
-        font-size: 1.2rem; 
-        margin: 15px 0; 
+        display: flex;
+        align-items: center;
+        justify-content: center; /* Teks berada di tengah tombol */
+        font-size: 1.05rem; 
+        font-weight: 600;
+        color: var(--text-main);
+        padding: 14px 20px;
+        margin: 0;
+        border-radius: 14px;
+        border: 1px solid transparent;
+        transition: all 0.3s ease;
+        text-decoration: none;
+    }
+
+    /* Efek Hover & Aktif */
+    .nav-links:hover, 
+    .nav-links.active {
+        background-color: var(--primary);
+        color: var(--white);
+        transform: scale(1.02);
+        box-shadow: 0 4px 15px rgba(97, 129, 108, 0.3);
+    }
+
+    /* Tombol Switch Mode Terang/Gelap */
+    .theme-toggle-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 12px;
+        margin-top: 10px;
+        border-radius: 14px;
     }
 
     .about-card { padding: 2rem; }
 }
-
 /* Mencegah latar belakang di-scroll saat menu setengah layar terbuka */
 body.no-scroll {
     overflow: hidden !important;
@@ -570,16 +616,15 @@ body.no-scroll {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.4);            /* Latar gelap transparan */
-    backdrop-filter: blur(8px);                 /* Efek buram/blur */
-    -webkit-backdrop-filter: blur(8px);        /* Dukungan browser Safari */
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.4s ease, visibility 0.4s ease;
-    z-index: 1001;                              /* Berada tepat di bawah nav-menu (1001) */
+    z-index: 1001;
 }
 
-/* Kondisi saat overlay aktif */
 .menu-overlay.active {
     opacity: 1;
     visibility: visible;
