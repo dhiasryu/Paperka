@@ -518,7 +518,7 @@ footer {
 .article-hero {
     padding: 140px 20px 60px;
     background: linear-gradient(135deg, rgba(17, 19, 18, 0.92), rgba(26, 29, 27, 0.88)), 
-                url('asset/Icon.jpeg') center/cover no-repeat;
+                url('asset/icon.png') center/cover no-repeat;
     text-align: center;
     color: var(--white);
     border-bottom: 1px solid var(--border-color);
