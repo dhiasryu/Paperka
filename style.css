@@ -296,6 +296,29 @@ main {
     box-shadow: 0 20px 40px var(--shadow-color);
 }
 
+/* Style Tambahan Logo & CTA Artikel di Homepage */
+.paperka-main-logo {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    transition: transform 0.3s ease;
+}
+
+.paperka-main-logo:hover {
+    transform: scale(1.08) rotate(3deg);
+}
+
+.section-tag {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--primary-color, #10b981);
+    margin-bottom: 0.8rem;
+}
 
 
 /*-----------------------------------------------------------*/
