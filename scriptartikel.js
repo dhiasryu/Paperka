@@ -113,13 +113,21 @@ document.addEventListener('DOMContentLoaded', () => {
         const endIndex = startIndex + itemsPerPage;
         const visibleCards = filteredCards.slice(startIndex, endIndex);
 
+        // Perbaikan: Hapus duplikasi looping, jadikan satu proses yang rapi
         visibleCards.forEach(card => {
             card.style.display = card.classList.contains('featured') ? 'grid' : 'flex';
             if (articleContainer) {
                 articleContainer.appendChild(card);
             }
+
+            // Jalankan ulang animasi saat kartu ditampilkan
+            setTimeout(() => {
+                card.classList.add('show');
+            }, 50);
         });
 
+        renderPaginationControls(totalPages);
+    }
     visibleCards.forEach(card => {
         card.style.display = card.classList.contains('featured') ? 'grid' : 'flex';
         if (articleContainer) {
