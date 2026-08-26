@@ -155,35 +155,3 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
-
-// ==========================================================================
-// 7. ANIMASI TRANSISI HALAMAN (Dukungan Tombol Back/Forward Browser)
-// ==========================================================================
-
-// 1. Reset & jalankan animasi masuk setiap kali halaman ditampilkan (termasuk via BFCache/Back Button)
-window.addEventListener('pageshow', () => {
-    document.body.classList.remove('page-exiting');
-    document.body.classList.add('page-loaded');
-});
-
-// 2. Tangkap klik tautan internal untuk animasi keluar
-document.addEventListener('click', (e) => {
-    const link = e.target.closest('a[href]:not([target="_blank"]):not([href^="#"]):not([href^="javascript:"])');
-    
-    if (link) {
-        const targetUrl = link.getAttribute('href');
-
-        // Pastikan bukan link luar atau mailto
-        if (targetUrl && !targetUrl.startsWith('http') && !targetUrl.startsWith('mailto:')) {
-            e.preventDefault();
-
-            // Tambahkan animasi keluar
-            document.body.classList.add('page-exiting');
-
-            // Pindah halaman setelah animasi selesai
-            setTimeout(() => {
-                window.location.href = targetUrl;
-            }, 400);
-        }
-    }
-});
