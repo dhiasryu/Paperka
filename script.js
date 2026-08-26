@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
     const galleryItems = document.querySelectorAll('.gallery-item');
     const paginationContainer = document.getElementById('pagination');
-    const itemsPerPage = 6;
+    const itemsPerPage = 2;
     let currentPage = 1;
 
     function renderGallery() {
