@@ -81,7 +81,7 @@ body {
     background: var(--bg-glass);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    z-index: 1000;
+    z-index: 1005;
     border-bottom: 1px solid var(--border-color);
     transition: background 0.4s ease, border-color 0.4s ease;
 }
@@ -541,8 +541,7 @@ footer {
         flex-direction: column; 
         justify-content: center;
         align-items: center; 
-        transition: right 0.4s ease;
-        z-index: 1005 !important;        /* Berada tepat di bawah .menu-toggle */
+        transition: right 0.4s ease;        /* Berada tepat di bawah .menu-toggle */
     }
     
     .nav-menu.active { 
