@@ -205,8 +205,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderArticles() {
         const filteredCards = getFilteredCards();
+        // Mengambil pembungkus utama kartu artikel
+        const articleContainer = document.querySelector('.article-grid') || document.querySelector('.article-container');
 
-        // Urutkan artikel dari ID terbesar (terbaru) ke ID terkecil (terlama)
+        // 1. Urutkan artikel dari ID terbesar (terbaru) ke ID terkecil (terlama)
         filteredCards.sort((a, b) => {
             const idA = parseInt(a.getAttribute('data-id')) || 0;
             const idB = parseInt(b.getAttribute('data-id')) || 0;
@@ -217,15 +219,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (currentPage > totalPages) currentPage = totalPages;
 
+        // Sembunyikan semua kartu terlebih dahulu
         articleCards.forEach(card => card.style.display = 'none');
 
+        // Ambil kartu yang masuk ke halaman aktif
         const startIndex = (currentPage - 1) * itemsPerPage;
         const endIndex = startIndex + itemsPerPage;
         const visibleCards = filteredCards.slice(startIndex, endIndex);
 
-        visibleCards.forEach((card, index) => {
+        // 2. Tampilkan dan susun ulang posisi elemen di HTML secara fisik
+        visibleCards.forEach(card => {
             card.style.display = card.classList.contains('featured') ? 'grid' : 'flex';
-            card.style.order = index; // Mengunci urutan tampilan terbaru di posisi atas
+            if (articleContainer) {
+                articleContainer.appendChild(card); // Memindahkan posisi elemen HTML secara langsung
+            }
         });
 
         renderPaginationControls(totalPages);
