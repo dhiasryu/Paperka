@@ -562,6 +562,28 @@ body.no-scroll {
     height: 100vh !important;
 }
 
+/* --- OVERLAY BLUR BACKDROP --- */
+.menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);            /* Latar gelap transparan */
+    backdrop-filter: blur(8px);                 /* Efek buram/blur */
+    -webkit-backdrop-filter: blur(8px);        /* Dukungan browser Safari */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    z-index: 1000;                              /* Berada tepat di bawah nav-menu (1001) */
+}
+
+/* Kondisi saat overlay aktif */
+.menu-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
 /* ==========================================================================
    HALAMAN ARTIKEL (HERO, SEARCH FILTER, GRID & MODAL READER)
    ========================================================================== */
