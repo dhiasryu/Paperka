@@ -542,6 +542,7 @@ footer {
         justify-content: center;
         align-items: center; 
         transition: right 0.4s ease;        /* Berada tepat di bawah .menu-toggle */
+        z-index: 1005;
     }
     
     .nav-menu.active { 
