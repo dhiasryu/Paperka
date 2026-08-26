@@ -120,6 +120,18 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
+    visibleCards.forEach(card => {
+        card.style.display = card.classList.contains('featured') ? 'grid' : 'flex';
+        if (articleContainer) {
+            articleContainer.appendChild(card);
+        }
+
+        // TAMBAHKAN KODE INI: Jalankan ulang animasi saat kartu ditampilkan
+        setTimeout(() => {
+            card.classList.add('show');
+        }, 50);
+    });
+
         renderPaginationControls(totalPages);
     }
 
