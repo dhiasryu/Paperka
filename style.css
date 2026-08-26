@@ -539,7 +539,8 @@ footer {
         background: var(--bg-card); 
         box-shadow: -10px 0 30px var(--shadow-color);
         flex-direction: column; 
-        justify-content: center;
+        justify-content: flex-start;
+        padding-top: 100px;
         align-items: center; 
         transition: right 0.4s ease;        /* Berada tepat di bawah .menu-toggle */
         z-index: 1005;
