@@ -149,12 +149,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const lightboxCaption = document.querySelector('#lightbox-caption');
         const lightboxClose = document.querySelector('.lightbox-close');
 
-        // 1. Definisikan fungsi penutup modal di atas
-        const closeLightbox = () => {
-            lightbox.classList.remove('active');
-            document.body.classList.remove('no-scroll');
-        };
-
         galleryItems.forEach(item => {
             item.addEventListener('click', () => {
                 const img = item.querySelector('img');
@@ -165,12 +159,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (lightboxCaption) {
                     lightboxCaption.innerHTML = `<strong>${title}</strong><br><span style="opacity:0.8; font-size:0.95rem;">${desc}</span>`;
                 }
-
-                // 2. Kunci scroll saat modal terbuka
                 lightbox.classList.add('active');
-                document.body.classList.add('no-scroll');
             });
         });
+
+        const closeLightbox = () => lightbox.classList.remove('active');
 
         if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
 
@@ -180,7 +173,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && lightbox && lightbox.classList.contains('active')) {
-                closeLightbox();
+                lightbox.classList.remove('active');
             }
         });
     }
+});
