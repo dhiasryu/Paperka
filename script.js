@@ -144,24 +144,106 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================================================
-    // 6. LIGHTBOX MODAL LOGIC (DOKUMENTASI)
+    // 6. LOGIKA PAGINASI & LIGHTBOX MODAL DOKUMENTASI
     // ==========================================================================
     const galleryItems = document.querySelectorAll('.gallery-item');
-    const lightbox = document.querySelector('#lightbox');
+    const paginationContainer = document.getElementById('pagination');
+    const itemsPerPage = 6;
+    let currentPage = 1;
 
+    function renderGallery() {
+        if (galleryItems.length === 0) return;
+
+        const totalPages = Math.ceil(galleryItems.length / itemsPerPage) || 1;
+        if (currentPage > totalPages) currentPage = totalPages;
+
+        // Sembunyikan semua foto
+        galleryItems.forEach(item => item.style.display = 'none');
+
+        // Tampilkan foto sesuai halaman aktif
+        const startIndex = (currentPage - 1) * itemsPerPage;
+        const endIndex = startIndex + itemsPerPage;
+
+        galleryItems.forEach((item, index) => {
+            if (index >= startIndex && index < endIndex) {
+                item.style.display = 'block';
+            }
+        });
+
+        renderPaginationControls(totalPages);
+    }
+
+    function renderPaginationControls(totalPages) {
+        if (!paginationContainer) return;
+        paginationContainer.innerHTML = '';
+
+        if (totalPages <= 1) return;
+
+        // Tombol Prev
+        const prevBtn = document.createElement('button');
+        prevBtn.className = 'page-btn hover-target';
+        prevBtn.textContent = '← Prev';
+        prevBtn.disabled = currentPage === 1;
+        prevBtn.addEventListener('click', () => {
+            if (currentPage > 1) {
+                currentPage--;
+                renderGallery();
+                scrollToGallery();
+            }
+        });
+        paginationContainer.appendChild(prevBtn);
+
+        // Tombol Angka Halaman
+        for (let i = 1; i <= totalPages; i++) {
+            const pageBtn = document.createElement('button');
+            pageBtn.className = `page-btn hover-target ${i === currentPage ? 'active' : ''}`;
+            pageBtn.textContent = i;
+            pageBtn.addEventListener('click', () => {
+                currentPage = i;
+                renderGallery();
+                scrollToGallery();
+            });
+            paginationContainer.appendChild(pageBtn);
+        }
+
+        // Tombol Next
+        const nextBtn = document.createElement('button');
+        nextBtn.className = 'page-btn hover-target';
+        nextBtn.textContent = 'Next →';
+        nextBtn.disabled = currentPage === totalPages;
+        nextBtn.addEventListener('click', () => {
+            if (currentPage < totalPages) {
+                currentPage++;
+                renderGallery();
+                scrollToGallery();
+            }
+        });
+        paginationContainer.appendChild(nextBtn);
+    }
+
+    function scrollToGallery() {
+        const target = document.querySelector('.gallery-section');
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+
+    // Jalankan paginasi saat pertama kali dimuat
+    renderGallery();
+
+    // Logika Lightbox Modal tetap berfungsi normal di bawah ini...
+    const lightbox = document.querySelector('#lightbox');
     if (lightbox && galleryItems.length > 0) {
         const lightboxImg = document.querySelector('#lightbox-img');
         const lightboxCaption = document.querySelector('#lightbox-caption');
         const lightboxClose = document.querySelector('.lightbox-close');
 
-        // Fungsi buka modal & kunci scroll
         const openLightbox = () => {
             lightbox.classList.add('active');
             document.documentElement.classList.add('no-scroll');
             document.body.classList.add('no-scroll');
         };
 
-        // Fungsi tutup modal & buka kunci scroll
         const closeLightbox = () => {
             lightbox.classList.remove('active');
             document.documentElement.classList.remove('no-scroll');
@@ -195,5 +277,5 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
+    
 }); // <-- PASTIKAN BARIS PENUTUP DOMContentLoaded INI TETAP ADA DI PALING AKHIR FILE
