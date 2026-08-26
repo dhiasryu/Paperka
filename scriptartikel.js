@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
     // 2. LOGIKA PAGINASI & FILTER ARTIKEL
     // ==========================================================================
-    const itemsPerPage = 6;
+    const itemsPerPage = 2;
     let currentPage = 1;
     let currentCategory = 'all';
     let searchQuery = '';
@@ -107,7 +107,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (currentPage > totalPages) currentPage = totalPages;
 
-        articleCards.forEach(card => card.style.display = 'none');
+        // Sembunyikan kartu & hapus class animasi lama
+        articleCards.forEach(card => {
+            card.style.display = 'none';
+            card.classList.remove('fade-in');
+        });
 
         const startIndex = (currentPage - 1) * itemsPerPage;
         const endIndex = startIndex + itemsPerPage;
@@ -115,6 +119,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         visibleCards.forEach(card => {
             card.style.display = card.classList.contains('featured') ? 'grid' : 'flex';
+            
+            // Reflow browser untuk memicu animasi fade-in ulang
+            void card.offsetWidth;
+            card.classList.add('fade-in');
+
             if (articleContainer) {
                 articleContainer.appendChild(card);
             }
