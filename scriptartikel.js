@@ -145,8 +145,8 @@ document.addEventListener('DOMContentLoaded', () => {
         prevBtn.addEventListener('click', () => {
             if (currentPage > 1) {
                 currentPage--;
-                renderArticles();
                 scrollToArticles();
+                renderArticles();
             }
         });
         paginationContainer.appendChild(prevBtn);
@@ -157,8 +157,8 @@ document.addEventListener('DOMContentLoaded', () => {
             pageBtn.textContent = i;
             pageBtn.addEventListener('click', () => {
                 currentPage = i;
-                renderArticles();
                 scrollToArticles();
+                renderArticles();
             });
             paginationContainer.appendChild(pageBtn);
         }
@@ -170,8 +170,8 @@ document.addEventListener('DOMContentLoaded', () => {
         nextBtn.addEventListener('click', () => {
             if (currentPage < totalPages) {
                 currentPage++;
-                renderArticles();
                 scrollToArticles();
+                renderArticles();
             }
         });
         paginationContainer.appendChild(nextBtn);
@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function scrollToArticles() {
         const target = document.querySelector('.article-container');
         if (target) {
-            target.scrollIntoView({ behavior: 'smooth' });
+            target.scrollIntoView({ behavior: 'smooth',block: 'start' });
         }
     }
 
