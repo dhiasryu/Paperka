@@ -1,6 +1,4 @@
-/* ==========================================================================
-   1. VARIABEL TEMA & SYSTEM RESET
-   ========================================================================== */
+/* --- VARIABEL TEMA & SYSTEM RESET --- */
 :root {
     /* Mode Terang (Default) */
     --primary: #61816c;
@@ -47,42 +45,10 @@ body {
     background-color: var(--bg-main);
     color: var(--text-main);
     overflow-x: hidden;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    margin: 0;
-    /* Efek Transisi Halaman (Fade) */
-    opacity: 0;
-    transform: translateY(5px);
-    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out, background-color 0.4s ease, color 0.4s ease;
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-html, body {
-    width: 100%;
-    max-width: 100vw;
-    overflow-x: hidden; /* Mencegah elemen melimpah secara horizontal */
-    position: relative;
-}
-
-body.page-loaded {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-body.page-exiting {
-    opacity: 0;
-    transform: translateY(-5px);
-}
-
-body.no-scroll {
-    overflow: hidden !important;
-    height: 100vh !important;
-    touch-action: none; /* Mengunci scroll pada layar sentuh HP */
-}
-
-/* ==========================================================================
-   2. CUSTOM CURSOR
-   ========================================================================== */
+/* --- CUSTOM CURSOR --- */
 .custom-cursor {
     position: fixed;
     top: 0;
@@ -106,9 +72,7 @@ body.no-scroll {
     mix-blend-mode: normal;
 }
 
-/* ==========================================================================
-   3. NAVBAR GLASSMORPHISM & THEME TOGGLE
-   ========================================================================== */
+/* --- NAVBAR GLASSMORPHISM --- */
 .navbar {
     position: fixed;
     top: 0;
@@ -139,33 +103,10 @@ body.no-scroll {
 }
 
 .nav-menu {
-    position: fixed !important; /* Wajib fixed agar keluar dari layout flow */
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100vh;
-    z-index: 9999;
-    
-    /* Layout Isi Menu */
     display: flex;
-    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 1.5rem;
-    
-    /* Sembunyikan total dari alur halaman saat tidak aktif */
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transform: translateX(100%); /* Geser penuh ke luar layar kanan */
-    transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s ease;
-}
-
-.nav-menu.active {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto;
-    transform: translateX(0); /* Muncul kembali ke layar */
+    list-style: none;
+    gap: 10px;
 }
 
 .nav-links {
@@ -177,12 +118,12 @@ body.no-scroll {
     transition: all 0.3s ease;
 }
 
-.nav-links:hover, 
-.nav-links.active {
+.nav-links:hover, .nav-links.active {
     background-color: var(--primary);
     color: var(--white);
 }
 
+/* Tombol Toggle Theme */
 .theme-toggle-btn {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
@@ -203,13 +144,13 @@ body.no-scroll {
     transform: translateY(-2px);
 }
 
-.theme-toggle-btn:active {
-    transform: scale(0.95);
-}
-
 .theme-icon {
     display: inline-block;
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.theme-toggle-btn:active {
+    transform: scale(0.95);
 }
 
 .menu-toggle {
@@ -225,17 +166,7 @@ body.no-scroll {
     border-radius: 5px;
 }
 
-.hamburger, 
-.menu-toggle, 
-.navbar-toggler {
-    position: relative;
-    z-index: 10005 !important; /* Wajib lebih tinggi dari z-index menu (9999) */
-    cursor: pointer;
-}
-
-/* ==========================================================================
-   4. HERO & MARQUEE SECTION
-   ========================================================================== */
+/* --- HERO SECTION --- */
 .hero {
     position: relative;
     width: 100%;
@@ -279,7 +210,7 @@ body.no-scroll {
     text-shadow: 0 4px 10px rgba(0,0,0,0.5);
 }
 
-/* Running Text Marquee */
+/* --- RUNNING TEXT MARQUEE --- */
 .marquee-container {
     background: var(--primary);
     color: var(--white);
@@ -306,30 +237,15 @@ body.no-scroll {
     100% { transform: translateX(-50%); }
 }
 
-/* ==========================================================================
-   5. LAYOUT UTAMA & KOMPONEN UMUM
-   ========================================================================== */
+/* --- MAIN SECTIONS --- */
 main {
-    /* Perbaikan: Membuat main fleksibel agar Footer selalu di bawah dan Hero bisa full-screen */
-    flex: 1;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-main.page-content {
     max-width: 1200px;
     margin: 0 auto;
-    padding-top: 120px;
-    padding-bottom: 5rem;
-    min-height: 80vh;
+    overflow: hidden;
 }
 
 .about, .location {
     padding: 6rem 5%;
-    max-width: 1200px;
-    margin: 0 auto;
-    width: 100%;
 }
 
 .about-card {
@@ -380,6 +296,7 @@ main.page-content {
     box-shadow: 0 20px 40px var(--shadow-color);
 }
 
+/* Style Tambahan Logo & CTA Artikel di Homepage */
 .paperka-main-logo {
     width: 140px;
     height: 140px;
@@ -403,56 +320,15 @@ main.page-content {
     margin-bottom: 0.8rem;
 }
 
-/* Animasi Scroll Observer */
-.hidden {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+
+/*-----------------------------------------------------------*/
+/* --- DOKUMENTASI PAGE GRID --- */
+.page-content {
+    padding-top: 120px; 
+    min-height: 80vh;
+    padding-bottom: 5rem;
 }
 
-.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Back To Top Button */
-.back-to-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 48px;
-    height: 48px;
-    background: var(--primary);
-    color: var(--white);
-    border: none;
-    border-radius: 50%;
-    font-size: 1.4rem;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 10px 25px var(--shadow-color);
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(20px);
-    transition: all 0.3s ease;
-    z-index: 990; /* Perbaikan: Diturunkan agar tidak menimpa Navbar (1000) dan Modal (10000) */
-}
-
-.back-to-top.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-.back-to-top:hover {
-    background: var(--primary-light);
-    transform: translateY(-4px);
-}
-
-/* ==========================================================================
-   6. HALAMAN DOKUMENTASI & LIGHTBOX
-   ========================================================================== */
 .page-header {
     text-align: center;
     margin-bottom: 4rem;
@@ -464,9 +340,7 @@ main.page-content {
     font-weight: 900;
 }
 
-.page-title span { 
-    color: var(--primary); 
-}
+.page-title span { color: var(--primary); }
 
 .page-header p {
     font-size: 1.2rem;
@@ -518,7 +392,42 @@ main.page-content {
 .gallery-item:hover img { transform: scale(1.1); }
 .gallery-item:hover .gallery-overlay { bottom: 0; }
 
-/* Lightbox Modal */
+/* --- BACK TO TOP BUTTON --- */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 45px;
+    height: 45px;
+    background: var(--primary);
+    color: var(--white);
+    border: none;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 20px var(--shadow-color);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background: var(--primary-light);
+    transform: translateY(-5px);
+}
+
+/* --- LIGHTBOX MODAL (DOKUMENTASI) --- */
 .lightbox {
     position: fixed;
     top: 0;
@@ -578,9 +487,57 @@ main.page-content {
     color: var(--primary-light);
 }
 
+/* --- FOOTER --- */
+footer {
+    background: var(--bg-card);
+    border-top: 1px solid var(--border-color);
+    color: var(--text-main);
+    text-align: center;
+    padding: 4rem 5% 2rem;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+}
+
+.footer-content h3 { font-size: 2.5rem; margin-bottom: 1rem; font-weight: 900; color: var(--primary); }
+.social-links { margin: 2rem 0; }
+.social-links a { color: var(--text-main); text-decoration: none; margin: 0 15px; font-weight: 600; font-size: 1.1rem; transition: color 0.3s; }
+.social-links a:hover { color: var(--primary); }
+.footer-bottom { margin-top: 3rem; font-size: 0.9rem; color: var(--text-muted); }
+
+/* --- ANIMASI SCROLL --- */
+.hidden {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- RESPONSIVE MOBILE --- */
+@media screen and (max-width: 768px) {
+    .custom-cursor { display: none; }
+    * { cursor: auto; }
+    .menu-toggle { display: flex; z-index: 1001; }
+    
+    .nav-menu {
+        position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
+        background: var(--bg-card); flex-direction: column; justify-content: center;
+        align-items: center; transition: 0.5s ease-in-out;
+    }
+    
+    .nav-menu.active { right: 0; }
+    .nav-links { font-size: 1.5rem; margin: 15px 0; }
+    .about-card { padding: 2rem; }
+    }
+
 /* ==========================================================================
-   7. HALAMAN ARTIKEL (HERO, SEARCH, GRID, MODAL & PAGINASI)
+   HALAMAN ARTIKEL (HERO, SEARCH FILTER, GRID & MODAL READER)
    ========================================================================== */
+
+/* --- 1. Hero Section Artikel --- */
 .article-hero {
     padding: 140px 20px 60px;
     background: linear-gradient(135deg, rgba(17, 19, 18, 0.92), rgba(26, 29, 27, 0.88)), 
@@ -622,7 +579,7 @@ main.page-content {
     margin-bottom: 32px;
 }
 
-/* Search Box & Filter */
+/* --- 2. Box Pencarian & Filter Kategori --- */
 .search-filter-box {
     display: flex;
     flex-direction: column;
@@ -682,7 +639,7 @@ main.page-content {
     box-shadow: 0 4px 14px rgba(97, 129, 108, 0.35);
 }
 
-/* Grid & Kartu Artikel */
+/* --- 3. Layout Grid & Kartu Artikel --- */
 .article-container {
     max-width: 1200px;
     margin: 50px auto;
@@ -722,6 +679,7 @@ main.page-content {
     gap: 30px;
 }
 
+/* --- 4. Detail Komponen Dalam Kartu --- */
 .card-image {
     position: relative;
     width: 100%;
@@ -813,14 +771,14 @@ main.page-content {
     box-shadow: 0 4px 14px rgba(97, 129, 108, 0.35);
 }
 
-/* Modal Reader */
+/* --- 5. Modal Reader (Jendela Baca) --- */
 .article-modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 10001; /* Perbaikan: Dinaikkan agar selalu di atas elemen apapun */
+    z-index: 9999;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -924,6 +882,7 @@ main.page-content {
     border-radius: 0 12px 12px 0;
 }
 
+/* Styling gambar yang berada di dalam paragraf modal */
 .article-full-text img {
     width: 100%;
     max-height: 380px;
@@ -934,7 +893,33 @@ main.page-content {
     box-shadow: 0 6px 18px var(--shadow-color);
 }
 
-/* Paginasi */
+/* --- 6. Penyesuaian Responsif Layar Kecil (HP) --- */
+@media screen and (max-width: 768px) {
+    .article-hero {
+        padding: 110px 15px 40px;
+    }
+
+    .article-card.featured {
+        grid-template-columns: 1fr;
+    }
+
+    .article-card.featured .card-image {
+        height: 220px;
+    }
+
+    .modal-content {
+        padding: 25px 20px;
+        width: 92%;
+    }
+
+    .modal-body h1 {
+        font-size: 1.5rem;
+    }
+}
+
+/* ==========================================================================
+   PAGINASI ARTIKEL
+   ========================================================================== */
 .pagination {
     display: flex;
     justify-content: center;
@@ -974,87 +959,4 @@ main.page-content {
     opacity: 0.4;
     cursor: not-allowed;
     transform: none;
-}
-
-/* ==========================================================================
-   8. FOOTER
-   ========================================================================== */
-footer {
-    background: var(--bg-card);
-    border-top: 1px solid var(--border-color);
-    color: var(--text-main);
-    text-align: center;
-    padding: 4rem 5% 2rem;
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
-    width: 100%;
-    margin-top: auto;
-}
-
-.footer-content h3 { 
-    font-size: 2.5rem; 
-    margin-bottom: 1rem; 
-    font-weight: 900; 
-    color: var(--primary); 
-}
-
-.social-links { 
-    margin: 2rem 0; 
-}
-
-.social-links a { 
-    color: var(--text-main); 
-    text-decoration: none; 
-    margin: 0 15px; 
-    font-weight: 600; 
-    font-size: 1.1rem; 
-    transition: color 0.3s; 
-}
-
-.social-links a:hover { 
-    color: var(--primary); 
-}
-
-.footer-bottom { 
-    margin-top: 3rem; 
-    font-size: 0.9rem; 
-    color: var(--text-muted); 
-}
-
-/* ==========================================================================
-   9. RESPONSIVE MOBILE (TERGABUNG)
-   ========================================================================== */
-@media screen and (max-width: 768px) {
-    /* Cursor & Reset */
-    .custom-cursor { display: none; }
-    * { cursor: auto; }
-
-    /* Navigasi Mobile */
-    .menu-toggle { display: flex; z-index: 1001; }
-    
-    .nav-menu {
-        position: fixed; 
-        top: 0; 
-        right: -100%; 
-        width: 100%; 
-        height: 100vh;
-        background: var(--bg-card); 
-        flex-direction: column; 
-        justify-content: center;
-        align-items: center; 
-        transition: 0.5s ease-in-out;
-    }
-    
-    .nav-menu.active { right: 0; }
-    .nav-links { font-size: 1.5rem; margin: 15px 0; }
-    
-    /* Layout Homepage */
-    .about-card { padding: 2rem; }
-
-    /* Layout Artikel */
-    .article-hero { padding: 110px 15px 40px; }
-    .article-card.featured { grid-template-columns: 1fr; }
-    .article-card.featured .card-image { height: 220px; }
-    .modal-content { padding: 25px 20px; width: 92%; }
-    .modal-body h1 { font-size: 1.5rem; }
 }
