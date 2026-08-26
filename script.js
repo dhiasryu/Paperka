@@ -149,6 +149,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const lightboxCaption = document.querySelector('#lightbox-caption');
         const lightboxClose = document.querySelector('.lightbox-close');
 
+        // Fungsi terpusat untuk menutup Lightbox & mengaktifkan kembali scroll
+        const closeLightbox = () => {
+            lightbox.classList.remove('active');
+            document.body.classList.remove('no-scroll'); // Buka kunci scroll
+        };
+
         galleryItems.forEach(item => {
             item.addEventListener('click', () => {
                 const img = item.querySelector('img');
@@ -159,22 +165,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (lightboxCaption) {
                     lightboxCaption.innerHTML = `<strong>${title}</strong><br><span style="opacity:0.8; font-size:0.95rem;">${desc}</span>`;
                 }
+
+                // Tampilkan lightbox & kunci scroll body
                 lightbox.classList.add('active');
+                document.body.classList.add('no-scroll');
             });
         });
 
-        const closeLightbox = () => lightbox.classList.remove('active');
-
+        // Tutup saat tombol silang (X) diklik
         if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
 
+        // Tutup saat area luar gambar diklik
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox) closeLightbox();
         });
 
+        // Tutup saat tombol Escape ditekan
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && lightbox && lightbox.classList.contains('active')) {
-                lightbox.classList.remove('active');
+                closeLightbox();
             }
         });
     }
-});
