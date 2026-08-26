@@ -524,7 +524,7 @@ footer {
     /* Z-index 1002 memastikan tombol garis tiga selalu berada DI ATAS menu */
     .menu-toggle { 
         display: flex; 
-        z-index: 1002; 
+        z-index: 999; 
     }
     
     .nav-menu {
@@ -541,7 +541,7 @@ footer {
         justify-content: center;
         align-items: center; 
         transition: right 0.4s ease;
-        z-index: 1001;        /* Berada tepat di bawah .menu-toggle */
+        z-index: 1002 !important;        /* Berada tepat di bawah .menu-toggle */
     }
     
     .nav-menu.active { 
