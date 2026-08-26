@@ -149,6 +149,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const lightboxCaption = document.querySelector('#lightbox-caption');
         const lightboxClose = document.querySelector('.lightbox-close');
 
+        // Fungsi buka modal & kunci scroll
+        const openLightbox = () => {
+            lightbox.classList.add('active');
+            document.documentElement.classList.add('no-scroll');
+            document.body.classList.add('no-scroll');
+        };
+
+        // Fungsi tutup modal & buka kunci scroll
+        const closeLightbox = () => {
+            lightbox.classList.remove('active');
+            document.documentElement.classList.remove('no-scroll');
+            document.body.classList.remove('no-scroll');
+        };
+
         galleryItems.forEach(item => {
             item.addEventListener('click', () => {
                 const img = item.querySelector('img');
@@ -159,11 +173,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (lightboxCaption) {
                     lightboxCaption.innerHTML = `<strong>${title}</strong><br><span style="opacity:0.8; font-size:0.95rem;">${desc}</span>`;
                 }
-                lightbox.classList.add('active');
+
+                openLightbox();
             });
         });
-
-        const closeLightbox = () => lightbox.classList.remove('active');
 
         if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
 
@@ -172,9 +185,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && lightbox && lightbox.classList.contains('active')) {
-                lightbox.classList.remove('active');
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
             }
         });
     }
-});
+
+}); // <-- PASTIKAN BARIS PENUTUP DOMContentLoaded INI TETAP ADA DI PALING AKHIR FILE
