@@ -74,6 +74,12 @@ body.page-exiting {
     transform: translateY(-5px);
 }
 
+body.no-scroll {
+    overflow: hidden !important;
+    height: 100vh !important;
+    touch-action: none; /* Mengunci scroll pada layar sentuh HP */
+}
+
 /* ==========================================================================
    2. CUSTOM CURSOR
    ========================================================================== */
@@ -217,6 +223,14 @@ body.page-exiting {
     height: 3px;
     background: var(--primary);
     border-radius: 5px;
+}
+
+.hamburger, 
+.menu-toggle, 
+.navbar-toggler {
+    position: relative;
+    z-index: 10005 !important; /* Wajib lebih tinggi dari z-index menu (9999) */
+    cursor: pointer;
 }
 
 /* ==========================================================================
