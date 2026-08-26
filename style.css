@@ -320,6 +320,26 @@ main {
     margin-bottom: 0.8rem;
 }
 
+/* Efek fade awal saat halaman dimuat */
+body {
+    opacity: 0;
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+    transform: translateY(5px);
+}
+
+/* Efek saat halaman selesai dimuat */
+body.page-loaded {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Efek saat berpindah ke halaman lain */
+body.page-exiting {
+    opacity: 0;
+    transform: translateY(-5px);
+}
+
+
 
 /*-----------------------------------------------------------*/
 /* --- DOKUMENTASI PAGE GRID --- */
