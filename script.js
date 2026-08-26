@@ -30,29 +30,34 @@ document.addEventListener('DOMContentLoaded', () => {
         if (menuToggle) menuToggle.classList.remove('active');
         if (navMenu) navMenu.classList.remove('active');
         if (menuOverlay) menuOverlay.classList.remove('active');
+        document.documentElement.classList.remove('no-scroll');
         document.body.classList.remove('no-scroll');
     }
 
     if (menuToggle && navMenu) {
-        // Toggle Buka / Tutup Menu saat ikon hamburger diklik
         menuToggle.addEventListener('click', () => {
             menuToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
             if (menuOverlay) menuOverlay.classList.toggle('active');
-            document.body.classList.toggle('no-scroll');
+            
+            const isMenuOpen = navMenu.classList.contains('active');
+            if (isMenuOpen) {
+                document.documentElement.classList.add('no-scroll');
+                document.body.classList.add('no-scroll');
+            } else {
+                document.documentElement.classList.remove('no-scroll');
+                document.body.classList.remove('no-scroll');
+            }
         });
 
-        // Tutup menu jika area blur (overlay) diklik
         if (menuOverlay) {
             menuOverlay.addEventListener('click', closeMenu);
         }
 
-        // Tutup menu ketika salah satu link diklik
         navLinks.forEach(link => {
             link.addEventListener('click', closeMenu);
         });
 
-        // Tutup menu jika tombol Escape ditekan
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && navMenu.classList.contains('active')) {
                 closeMenu();
