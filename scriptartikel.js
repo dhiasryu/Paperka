@@ -249,7 +249,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function closeModal() {
         if (!modal) return;
         modal.classList.remove('active');
-        document.body.style.overflow = 'auto';
+        // Perbaikan: Kembalikan ke string kosong, BUKAN 'auto', agar mengikuti CSS bawaan body
+        document.body.style.overflow = ''; 
     }
 
     if (modalClose) modalClose.addEventListener('click', closeModal);
