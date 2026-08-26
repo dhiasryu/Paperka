@@ -152,26 +152,34 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentPage = 1;
 
     function renderGallery() {
-        if (galleryItems.length === 0) return;
+    if (galleryItems.length === 0) return;
 
-        const totalPages = Math.ceil(galleryItems.length / itemsPerPage) || 1;
-        if (currentPage > totalPages) currentPage = totalPages;
+    const totalPages = Math.ceil(galleryItems.length / itemsPerPage) || 1;
+    if (currentPage > totalPages) currentPage = totalPages;
 
-        // Sembunyikan semua foto
-        galleryItems.forEach(item => item.style.display = 'none');
+    // Sembunyikan semua foto & hapus class animasi lama
+    galleryItems.forEach(item => {
+        item.style.display = 'none';
+        item.classList.remove('fade-in');
+    });
 
-        // Tampilkan foto sesuai halaman aktif
-        const startIndex = (currentPage - 1) * itemsPerPage;
-        const endIndex = startIndex + itemsPerPage;
+    // Tampilkan foto sesuai halaman aktif + picu animasi fade-in
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
 
-        galleryItems.forEach((item, index) => {
-            if (index >= startIndex && index < endIndex) {
-                item.style.display = 'block';
-            }
-        });
+    galleryItems.forEach((item, index) => {
+        if (index >= startIndex && index < endIndex) {
+            item.style.display = 'block';
+            
+            // Trik reflow agar browser memicu ulang animasi CSS
+            void item.offsetWidth; 
+            
+            item.classList.add('fade-in');
+        }
+    });
 
-        renderPaginationControls(totalPages);
-    }
+    renderPaginationControls(totalPages);
+}
 
     function renderPaginationControls(totalPages) {
         if (!paginationContainer) return;
