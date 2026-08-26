@@ -205,6 +205,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderArticles() {
         const filteredCards = getFilteredCards();
+
+        // Urutkan artikel dari ID terbesar (terbaru) ke ID terkecil (terlama)
+        filteredCards.sort((a, b) => {
+            const idA = parseInt(a.getAttribute('data-id')) || 0;
+            const idB = parseInt(b.getAttribute('data-id')) || 0;
+            return idB - idA;
+        });
+
         const totalPages = Math.ceil(filteredCards.length / itemsPerPage) || 1;
 
         if (currentPage > totalPages) currentPage = totalPages;
@@ -215,8 +223,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const endIndex = startIndex + itemsPerPage;
         const visibleCards = filteredCards.slice(startIndex, endIndex);
 
-        visibleCards.forEach(card => {
+        visibleCards.forEach((card, index) => {
             card.style.display = card.classList.contains('featured') ? 'grid' : 'flex';
+            card.style.order = index; // Mengunci urutan tampilan terbaru di posisi atas
         });
 
         renderPaginationControls(totalPages);
