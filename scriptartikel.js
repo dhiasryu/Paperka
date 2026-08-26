@@ -1,105 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // ==========================================================================
-    // 1. CUSTOM CURSOR
-    // ==========================================================================
-    const cursor = document.querySelector('.custom-cursor');
-    const hoverTargets = document.querySelectorAll('.hover-target, a, button, input');
-
-    if (cursor) {
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
-
-        hoverTargets.forEach(target => {
-            target.addEventListener('mouseenter', () => cursor.classList.add('expand'));
-            target.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
-        });
-    }
-
-    // ==========================================================================
-    // 2. MOBILE MENU TOGGLE
-    // ==========================================================================
-    const menuToggle = document.querySelector('#mobile-menu');
-    const navMenu = document.querySelector('.nav-menu');
-    const navLinks = document.querySelectorAll('.nav-links');
-
-    if (menuToggle && navMenu) {
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-            });
-        });
-    }
-
-    // ==========================================================================
-    // 3. DARK & LIGHT MODE SWITCHER
-    // ==========================================================================
-    const themeToggleBtn = document.querySelector('#themeToggle');
-    const themeIcon = document.querySelector('.theme-icon');
-    const themeText = document.querySelector('.theme-text');
-
-    function applyTheme(theme) {
-        if (theme === 'dark') {
-            document.documentElement.setAttribute('data-theme', 'dark');
-            if (themeIcon) themeIcon.textContent = '☀️';
-            if (themeText) themeText.textContent = 'Light';
-            localStorage.setItem('paperka-theme', 'dark');
-        } else {
-            document.documentElement.removeAttribute('data-theme');
-            if (themeIcon) themeIcon.textContent = '🌙';
-            if (themeText) themeText.textContent = 'Dark';
-            localStorage.setItem('paperka-theme', 'light');
-        }
-    }
-
-    const savedTheme = localStorage.getItem('paperka-theme');
-    if (savedTheme) {
-        applyTheme(savedTheme);
-    } else {
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        applyTheme(prefersDark ? 'dark' : 'light');
-    }
-
-    if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', () => {
-            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-            if (themeIcon) {
-                themeIcon.style.transition = 'transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-                themeIcon.style.transform = 'rotate(360deg) scale(1.4)';
-                setTimeout(() => {
-                    themeIcon.style.transform = 'rotate(0deg) scale(1)';
-                }, 400);
-            }
-            applyTheme(isDark ? 'light' : 'dark');
-        });
-    }
-
-    // ==========================================================================
-    // 4. BACK TO TOP BUTTON LOGIC
-    // ==========================================================================
-    const backToTopBtn = document.querySelector('#backToTop');
-    if (backToTopBtn) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopBtn.classList.add('show');
-            } else {
-                backToTopBtn.classList.remove('show');
-            }
-        });
-
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    }
-
-    // ==========================================================================
-    // 5. DATA ARTIKEL BARU
+    // 1. DATA ARTIKEL
     // ==========================================================================
     const articlesData = [
         {
@@ -123,19 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 <h3>Keaktifan Anggota sebagai Kunci Keberhasilan Organisasi</h3>
                 <p>Tidak dapat dipungkiri, keberhasilan Paperka di Padukuhan Kandangan dalam menjalankan berbagai programnya sangat bergantung pada keaktifan para anggotanya. Semangat kebersamaan yang ditunjukkan melalui kehadiran rutin dalam rapat, kesediaan mengambil peran dalam setiap kegiatan, hingga inisiatif untuk terus belajar dan berkembang menjadi fondasi yang menentukan hidup atau matinya sebuah organisasi kepemudaan di tingkat padukuhan.</p>
-                <p>Anggota yang aktif tidak hanya hadir secara fisik, tetapi juga turut memikirkan arah organisasi, memberikan gagasan segar, dan menjaga agar Paperka tetap relevan dengan kebutuhan zaman.</p>
-                
-                <blockquote>“Idealisme adalah kemewahan terakhir yang hanya dimiliki oleh seorang pemuda.” — Tan Malaka</blockquote>
-                
-                <p>Kutipan ini menjadi pengingat penting bagi setiap anggota agar tidak mudah kehilangan semangat dan idealismenya di tengah kesibukan pribadi, sebab justru pada usia mudalah seseorang memiliki keleluasaan untuk berjuang dan berkontribusi tanpa banyak beban.</p>
-                <p>Sayangnya, tantangan yang kerap dihadapi organisasi kepemudaan seperti Paperka adalah menurunnya partisipasi anggota seiring berjalannya waktu, entah karena kesibukan pekerjaan, pendidikan, maupun hilangnya rasa memiliki terhadap organisasi. Padahal, sekecil apa pun peran yang diambil, keterlibatan setiap anggota adalah nyawa dari keberlangsungan organisasi itu sendiri. Oleh karena itu, penting bagi seluruh anggota Paperka untuk terus menjaga komitmen dan tidak melupakan organisasi yang telah menjadi tempatnya bertumbuh, sebab dari keaktifan itulah lahir program-program nyata yang dirasakan manfaatnya oleh masyarakat luas.</p>
 
-                <h3>Menjaga Keamanan dan Ketertiban Lingkungan</h3>
-                <p>Peran lain yang tidak kalah penting adalah kontribusi Paperka dalam menjaga keamanan dan ketertiban lingkungan. Melalui kegiatan ronda malam, maupun keterlibatan dalam penanganan situasi darurat seperti bencana alam, para anggota Paperka menjadi garda terdepan yang siap sedia membantu masyarakat kapan pun dibutuhkan.</p>
+                <blockquote>“Idealisme adalah kemewahan terakhir yang hanya dimiliki oleh seorang pemuda.” — Tan Malaka</blockquote>
+
+                <p>Kutipan ini menjadi pengingat penting bagi setiap anggota agar tidak mudah kehilangan semangat dan idealismenya di tengah kesibukan pribadi, sebab justru pada usia mudalah seseorang memiliki keleluasaan untuk berjuang dan berkontribusi tanpa banyak beban.</p>
 
                 <h3>Penutup</h3>
-                <p>Keberadaan Paperka di Padukuhan Kandangan membuktikan bahwa organisasi kepemudaan mampu menjadi jembatan antara potensi generasi muda dengan kebutuhan pembangunan masyarakat secara menyeluruh. Melalui berbagai program di bidang sosial, ekonomi, keamanan, dan pemberdayaan pemuda, Paperka telah menunjukkan kontribusi nyata dalam membangun padukuhan yang lebih maju, guyub, dan sejahtera.</p>
-                <p>Dukungan dari seluruh elemen masyarakat, mulai dari perangkat padukuhan hingga warga secara umum, tentu sangat diperlukan agar peran strategis Paperka ini dapat terus berkembang dan memberikan manfaat yang berkelanjutan bagi Padukuhan Kandangan.</p>
+                <p>Keberadaan Paperka di Padukuhan Kandangan membuktikan bahwa organisasi kepemudaan mampu menjadi jembatan antara potensi generasi muda dengan kebutuhan pembangunan masyarakat secara menyeluruh.</p>
 
                 <br>
                 <p><em><strong>Artikel ini ditulis oleh: Raka</strong></em></p>
@@ -149,9 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
             readTime: "3 min baca",
             image: "asset/Icon.jpeg",
             excerpt: "None.",
-            content: `
-                <p>None.</p>
-            `
+            content: `<p>None.</p>`
         },
         {
             id: 3,
@@ -161,9 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
             readTime: "5 min baca",
             image: "asset/Icon.jpeg",
             excerpt: "None.",
-            content: `
-                <p>None</p>
-            `
+            content: `<p>None</p>`
         },
         {
             id: 4,
@@ -173,14 +65,12 @@ document.addEventListener('DOMContentLoaded', () => {
             readTime: "3 min baca",
             image: "asset/Icon.jpeg",
             excerpt: "None.",
-            content: `
-                <p>None</p>
-            `
+            content: `<p>None</p>`
         }
     ];
 
     // ==========================================================================
-    // 6. LOGIKA PAGINASI & FILTER ARTIKEL
+    // 2. LOGIKA PAGINASI & FILTER ARTIKEL
     // ==========================================================================
     const itemsPerPage = 5;
     let currentPage = 1;
@@ -205,10 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function renderArticles() {
         const filteredCards = getFilteredCards();
-        // Mengambil pembungkus utama kartu artikel
         const articleContainer = document.querySelector('.article-grid') || document.querySelector('.article-container');
 
-        // 1. Urutkan artikel dari ID terbesar (terbaru) ke ID terkecil (terlama)
         filteredCards.sort((a, b) => {
             const idA = parseInt(a.getAttribute('data-id')) || 0;
             const idB = parseInt(b.getAttribute('data-id')) || 0;
@@ -219,19 +107,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (currentPage > totalPages) currentPage = totalPages;
 
-        // Sembunyikan semua kartu terlebih dahulu
         articleCards.forEach(card => card.style.display = 'none');
 
-        // Ambil kartu yang masuk ke halaman aktif
         const startIndex = (currentPage - 1) * itemsPerPage;
         const endIndex = startIndex + itemsPerPage;
         const visibleCards = filteredCards.slice(startIndex, endIndex);
 
-        // 2. Tampilkan dan susun ulang posisi elemen di HTML secara fisik
         visibleCards.forEach(card => {
             card.style.display = card.classList.contains('featured') ? 'grid' : 'flex';
             if (articleContainer) {
-                articleContainer.appendChild(card); // Memindahkan posisi elemen HTML secara langsung
+                articleContainer.appendChild(card);
             }
         });
 
@@ -314,7 +199,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderArticles();
 
     // ==========================================================================
-    // 7. MODAL READER (JENDELA BACA ARTIKEL)
+    // 3. MODAL READER (JENDELA BACA ARTIKEL)
     // ==========================================================================
     const modal = document.getElementById('article-modal');
     const modalContent = document.getElementById('modal-body-content');
