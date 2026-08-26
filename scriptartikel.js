@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==========================================================================
     // 6. LOGIKA PAGINASI & FILTER ARTIKEL
     // ==========================================================================
-    const itemsPerPage = 2;
+    const itemsPerPage = 5;
     let currentPage = 1;
     let currentCategory = 'all';
     let searchQuery = '';
