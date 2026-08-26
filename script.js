@@ -19,21 +19,37 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==========================================================================
-    // 2. MOBILE MENU TOGGLE
+    // 2. MOBILE MENU TOGGLE (Lock Scroll & Side Drawer 50%)
     // ==========================================================================
     const menuToggle = document.querySelector('#mobile-menu');
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-links');
 
     if (menuToggle && navMenu) {
+        // Toggle Buka / Tutup Menu
         menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
+            // Kunci scroll body saat menu terbuka
+            document.body.classList.toggle('no-scroll');
         });
 
+        // Lepas menu & buka kunci scroll ketika salah satu link diklik
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
                 navMenu.classList.remove('active');
+                document.body.classList.remove('no-scroll');
             });
+        });
+
+        // Tutup menu saat tombol Escape ditekan
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.classList.remove('no-scroll');
+            }
         });
     }
 
