@@ -520,18 +520,47 @@ footer {
 @media screen and (max-width: 768px) {
     .custom-cursor { display: none; }
     * { cursor: auto; }
-    .menu-toggle { display: flex; z-index: 1001; }
+    
+    /* Z-index 1002 memastikan tombol garis tiga selalu berada DI ATAS menu */
+    .menu-toggle { 
+        display: flex; 
+        z-index: 1002; 
+    }
     
     .nav-menu {
-        position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
-        background: var(--bg-card); flex-direction: column; justify-content: center;
-        align-items: center; transition: 0.5s ease-in-out;
+        position: fixed; 
+        top: 0; 
+        right: -100%; 
+        width: 60%;           /* Mengambil sekitar setengah layar */
+        min-width: 240px;     /* Batas minimal lebar di HP kecil */
+        max-width: 300px;     /* Batas maksimal lebar agar tidak memenuhi layar */
+        height: 100vh;
+        background: var(--bg-card); 
+        box-shadow: -10px 0 30px var(--shadow-color);
+        flex-direction: column; 
+        justify-content: center;
+        align-items: center; 
+        transition: right 0.4s ease;
+        z-index: 1001;        /* Berada tepat di bawah .menu-toggle */
     }
     
-    .nav-menu.active { right: 0; }
-    .nav-links { font-size: 1.5rem; margin: 15px 0; }
-    .about-card { padding: 2rem; }
+    .nav-menu.active { 
+        right: 0; 
     }
+
+    .nav-links { 
+        font-size: 1.2rem; 
+        margin: 10px 0; 
+    }
+
+    .about-card { padding: 2rem; }
+}
+
+/* Mencegah latar belakang di-scroll saat menu setengah layar terbuka */
+body.no-scroll {
+    overflow: hidden !important;
+    height: 100vh !important;
+}
 
 /* ==========================================================================
    HALAMAN ARTIKEL (HERO, SEARCH FILTER, GRID & MODAL READER)
