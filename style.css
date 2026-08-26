@@ -370,23 +370,24 @@ main.page-content {
     position: fixed;
     bottom: 30px;
     right: 30px;
-    width: 45px;
-    height: 45px;
+    width: 48px;
+    height: 48px;
     background: var(--primary);
     color: var(--white);
     border: none;
     border-radius: 50%;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 10px 20px var(--shadow-color);
+    box-shadow: 0 10px 25px var(--shadow-color);
     opacity: 0;
     visibility: hidden;
     transform: translateY(20px);
     transition: all 0.3s ease;
-    z-index: 999;
+    z-index: 9999; /* Ditingkatkan agar berada di atas layer galeri */
+    pointer-events: auto;
 }
 
 .back-to-top.show {
@@ -397,7 +398,7 @@ main.page-content {
 
 .back-to-top:hover {
     background: var(--primary-light);
-    transform: translateY(-5px);
+    transform: translateY(-4px);
 }
 
 /* ==========================================================================
