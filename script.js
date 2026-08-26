@@ -149,10 +149,10 @@ document.addEventListener('DOMContentLoaded', () => {
         const lightboxCaption = document.querySelector('#lightbox-caption');
         const lightboxClose = document.querySelector('.lightbox-close');
 
-        // Fungsi terpusat untuk menutup Lightbox & mengaktifkan kembali scroll
+        // 1. Definisikan fungsi penutup modal di atas
         const closeLightbox = () => {
             lightbox.classList.remove('active');
-            document.body.classList.remove('no-scroll'); // Buka kunci scroll
+            document.body.classList.remove('no-scroll');
         };
 
         galleryItems.forEach(item => {
@@ -166,21 +166,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     lightboxCaption.innerHTML = `<strong>${title}</strong><br><span style="opacity:0.8; font-size:0.95rem;">${desc}</span>`;
                 }
 
-                // Tampilkan lightbox & kunci scroll body
+                // 2. Kunci scroll saat modal terbuka
                 lightbox.classList.add('active');
                 document.body.classList.add('no-scroll');
             });
         });
 
-        // Tutup saat tombol silang (X) diklik
         if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
 
-        // Tutup saat area luar gambar diklik
         lightbox.addEventListener('click', (e) => {
             if (e.target === lightbox) closeLightbox();
         });
 
-        // Tutup saat tombol Escape ditekan
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape' && lightbox && lightbox.classList.contains('active')) {
                 closeLightbox();
