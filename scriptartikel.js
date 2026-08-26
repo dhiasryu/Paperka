@@ -104,14 +104,41 @@ document.addEventListener('DOMContentLoaded', () => {
     const articlesData = [
         {
             id: 1,
-            title: "none",
-            category: "kegiatan",
-            date: "25 Agustus 2026",
-            readTime: "4 min baca",
+            title: "Peran Paperka dalam Membangun Masyarakat di Padukuhan Kandangan",
+            category: "Gagasan",
+            date: "26 Agustus 2026",
+            readTime: "10 min baca",
             image: "asset/Icon.jpeg",
-            excerpt: "None",
+            excerpt: "Paperka (Karang Taruna) merupakan pilar penting dalam menggerakkan roda pembangunan sosial, ekonomi, dan budaya di Padukuhan Kandangan...",
             content: `
-                <p>None.</p>
+                <p>Paperka (Karang Taruna) merupakan organisasi kepemudaan yang tumbuh dari, oleh, dan untuk masyarakat, khususnya generasi muda di tingkat desa maupun padukuhan. Di Padukuhan Kandangan, keberadaan Paperka menjadi salah satu pilar penting dalam menggerakkan roda pembangunan sosial, ekonomi, dan budaya di tingkat akar rumput. Organisasi ini tidak sekadar menjadi wadah berkumpulnya para pemuda, tetapi juga menjelma menjadi motor penggerak berbagai program yang menyentuh langsung kebutuhan masyarakat.</p>
+
+                <h3>Paperka sebagai Wadah Pemberdayaan Pemuda</h3>
+                <p>Salah satu peran utama Paperka di Padukuhan Kandangan adalah sebagai wadah pemberdayaan generasi muda. Melalui berbagai kegiatan seperti pelatihan keterampilan, diskusi kepemudaan, dan program kewirausahaan, para pemuda diajak untuk mengembangkan potensi diri sekaligus berkontribusi bagi lingkungan sekitar. Hal ini penting mengingat pemuda merupakan aset masa depan yang akan meneruskan estafet kepemimpinan dan pembangunan di padukuhan.</p>
+                <p>Dengan adanya wadah ini, energi dan kreativitas pemuda dapat diarahkan pada kegiatan yang produktif, sehingga mengurangi potensi keterlibatan dalam perilaku negatif seperti tawuran, penyalahgunaan waktu luang, atau pengangguran tanpa arah.</p>
+
+                <h3>Motor Penggerak Kegiatan Sosial dan Gotong Royong</h3>
+                <p>Paperka juga berperan aktif dalam menghidupkan kembali semangat gotong royong yang menjadi ciri khas masyarakat pedesaan. Kegiatan seperti kerja bakti membersihkan lingkungan, perbaikan fasilitas umum, hingga bantuan bagi warga yang membutuhkan menjadi agenda rutin yang digerakkan oleh para anggota Paperka.</p>
+                <p>Selain itu, dalam momen-momen tertentu seperti peringatan hari besar nasional maupun keagamaan, Paperka kerap menjadi panitia pelaksana yang mengorganisir warga untuk terlibat bersama, mempererat tali silaturahmi antarwarga, dan menjaga kekompakan masyarakat.</p>
+
+                <h3>Keaktifan Anggota sebagai Kunci Keberhasilan Organisasi</h3>
+                <p>Tidak dapat dipungkiri, keberhasilan Paperka di Padukuhan Kandangan dalam menjalankan berbagai programnya sangat bergantung pada keaktifan para anggotanya. Semangat kebersamaan yang ditunjukkan melalui kehadiran rutin dalam rapat, kesediaan mengambil peran dalam setiap kegiatan, hingga inisiatif untuk terus belajar dan berkembang menjadi fondasi yang menentukan hidup atau matinya sebuah organisasi kepemudaan di tingkat padukuhan.</p>
+                <p>Anggota yang aktif tidak hanya hadir secara fisik, tetapi juga turut memikirkan arah organisasi, memberikan gagasan segar, dan menjaga agar Paperka tetap relevan dengan kebutuhan zaman.</p>
+                
+                <blockquote>“Idealisme adalah kemewahan terakhir yang hanya dimiliki oleh seorang pemuda.” — Tan Malaka</blockquote>
+                
+                <p>Kutipan ini menjadi pengingat penting bagi setiap anggota agar tidak mudah kehilangan semangat dan idealismenya di tengah kesibukan pribadi, sebab justru pada usia mudalah seseorang memiliki keleluasaan untuk berjuang dan berkontribusi tanpa banyak beban.</p>
+                <p>Sayangnya, tantangan yang kerap dihadapi organisasi kepemudaan seperti Paperka adalah menurunnya partisipasi anggota seiring berjalannya waktu, entah karena kesibukan pekerjaan, pendidikan, maupun hilangnya rasa memiliki terhadap organisasi. Padahal, sekecil apa pun peran yang diambil, keterlibatan setiap anggota adalah nyawa dari keberlangsungan organisasi itu sendiri. Oleh karena itu, penting bagi seluruh anggota Paperka untuk terus menjaga komitmen dan tidak melupakan organisasi yang telah menjadi tempatnya bertumbuh, sebab dari keaktifan itulah lahir program-program nyata yang dirasakan manfaatnya oleh masyarakat luas.</p>
+
+                <h3>Menjaga Keamanan dan Ketertiban Lingkungan</h3>
+                <p>Peran lain yang tidak kalah penting adalah kontribusi Paperka dalam menjaga keamanan dan ketertiban lingkungan. Melalui kegiatan ronda malam, maupun keterlibatan dalam penanganan situasi darurat seperti bencana alam, para anggota Paperka menjadi garda terdepan yang siap sedia membantu masyarakat kapan pun dibutuhkan.</p>
+
+                <h3>Penutup</h3>
+                <p>Keberadaan Paperka di Padukuhan Kandangan membuktikan bahwa organisasi kepemudaan mampu menjadi jembatan antara potensi generasi muda dengan kebutuhan pembangunan masyarakat secara menyeluruh. Melalui berbagai program di bidang sosial, ekonomi, keamanan, dan pemberdayaan pemuda, Paperka telah menunjukkan kontribusi nyata dalam membangun padukuhan yang lebih maju, guyub, dan sejahtera.</p>
+                <p>Dukungan dari seluruh elemen masyarakat, mulai dari perangkat padukuhan hingga warga secara umum, tentu sangat diperlukan agar peran strategis Paperka ini dapat terus berkembang dan memberikan manfaat yang berkelanjutan bagi Padukuhan Kandangan.</p>
+
+                <br>
+                <p><em><strong>Artikel ini ditulis oleh: Raka</strong></em></p>
             `
         },
         {
