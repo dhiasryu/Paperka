@@ -113,32 +113,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const endIndex = startIndex + itemsPerPage;
         const visibleCards = filteredCards.slice(startIndex, endIndex);
 
-        // Perbaikan: Hapus duplikasi looping, jadikan satu proses yang rapi
         visibleCards.forEach(card => {
             card.style.display = card.classList.contains('featured') ? 'grid' : 'flex';
             if (articleContainer) {
                 articleContainer.appendChild(card);
             }
-
-            // Jalankan ulang animasi saat kartu ditampilkan
-            setTimeout(() => {
-                card.classList.add('show');
-            }, 50);
         });
-
-        renderPaginationControls(totalPages);
-    }
-    visibleCards.forEach(card => {
-        card.style.display = card.classList.contains('featured') ? 'grid' : 'flex';
-        if (articleContainer) {
-            articleContainer.appendChild(card);
-        }
-
-        // TAMBAHKAN KODE INI: Jalankan ulang animasi saat kartu ditampilkan
-        setTimeout(() => {
-            card.classList.add('show');
-        }, 50);
-    });
 
         renderPaginationControls(totalPages);
     }
@@ -249,8 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function closeModal() {
         if (!modal) return;
         modal.classList.remove('active');
-        // Perbaikan: Kembalikan ke string kosong, BUKAN 'auto', agar mengikuti CSS bawaan body
-        document.body.style.overflow = ''; 
+        document.body.style.overflow = 'auto';
     }
 
     if (modalClose) modalClose.addEventListener('click', closeModal);
