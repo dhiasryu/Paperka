@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
             category: "Gagasan",
             date: "26 Agustus 2026",
             readTime: "10 min baca",
-            image: "asset/Icon.jpeg",
+            image: "asset/icon.png",
             excerpt: "Paperka (Karang Taruna) merupakan pilar penting dalam menggerakkan roda pembangunan sosial, ekonomi, dan budaya di Padukuhan Kandangan...",
             content: `
                 <p>Paperka (Karang Taruna) merupakan organisasi kepemudaan yang tumbuh dari, oleh, dan untuk masyarakat, khususnya generasi muda di tingkat desa maupun padukuhan. Di Padukuhan Kandangan, keberadaan Paperka menjadi salah satu pilar penting dalam menggerakkan roda pembangunan sosial, ekonomi, dan budaya di tingkat akar rumput. Organisasi ini tidak sekadar menjadi wadah berkumpulnya para pemuda, tetapi juga menjelma menjadi motor penggerak berbagai program yang menyentuh langsung kebutuhan masyarakat.</p>
