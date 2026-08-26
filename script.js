@@ -157,29 +157,33 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ==========================================================================
-    // 7. Animasi pergantian halaman
-    // ==========================================================================
-// A. Tampilkan halaman dengan animasi masuk
-document.body.classList.add('page-loaded');
+// 7. ANIMASI TRANSISI HALAMAN (Dukungan Tombol Back/Forward Browser)
+// ==========================================================================
 
-// B. Tangkap klik pada semua tautan/link internal
-const internalLinks = document.querySelectorAll('a[href]:not([target="_blank"]):not([href^="#"]):not([href^="javascript:"])');
+// 1. Reset & jalankan animasi masuk setiap kali halaman ditampilkan (termasuk via BFCache/Back Button)
+window.addEventListener('pageshow', () => {
+    document.body.classList.remove('page-exiting');
+    document.body.classList.add('page-loaded');
+});
 
-internalLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
+// 2. Tangkap klik tautan internal untuk animasi keluar
+document.addEventListener('click', (e) => {
+    const link = e.target.closest('a[href]:not([target="_blank"]):not([href^="#"]):not([href^="javascript:"])');
+    
+    if (link) {
         const targetUrl = link.getAttribute('href');
 
-        // Pastikan tautan bukan tautan luar / email
+        // Pastikan bukan link luar atau mailto
         if (targetUrl && !targetUrl.startsWith('http') && !targetUrl.startsWith('mailto:')) {
-            e.preventDefault(); // Tahan dulu navigasi langsung
+            e.preventDefault();
 
-            // Jalankan animasi keluar
+            // Tambahkan animasi keluar
             document.body.classList.add('page-exiting');
 
-            // Pindah halaman setelah animasi selesai (400ms)
+            // Pindah halaman setelah animasi selesai
             setTimeout(() => {
                 window.location.href = targetUrl;
             }, 400);
         }
-    });
+    }
 });
