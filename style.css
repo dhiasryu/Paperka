@@ -1058,6 +1058,11 @@ body.no-scroll {
     transform: none;
 }
 
+/* Animasi Fade In Artikel */
+.article-card.fade-in {
+    animation: fadeIn 0.4s ease-in-out forwards;
+}
+
 /* Animasi Fade In untuk Galeri Dokumentasi */
 .gallery-item.fade-in {
     animation: fadeIn 0.4s ease-in-out forwards;
