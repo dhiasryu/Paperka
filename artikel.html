@@ -57,7 +57,7 @@
         </div>
     </nav>
 
-    <!-- Overlay Backdrop (Efek Blur Belakang Navigasi) -->
+    <!-- Overlay Backdrop -->
     <div class="menu-overlay" id="menuOverlay"></div>
 
     <!-- ================= HERO ARTIKEL ================= -->
@@ -83,22 +83,22 @@
     <!-- ================= UTAMA: DAFTAR ARTIKEL ================= -->
     <main class="article-container">
 
-        <!-- Artikel Utama / Featured Article --> <!-- Kartu Artikel ID 1 -->
-        <section class="featured-article hidden">
-            <article class="article-card hidden" data-id="1" data-category="desa">
-    <div class="card-image">
-        <img src="asset/icon.png" alt="Peran Paperka dalam Membangun Masyarakat di Padukuhan Kandangan" loading="lazy">
-        <span class="category-tag">Gagasan</span>
-    </div>
-    <div class="card-body">
-        <div class="article-meta">
-            <span class="date">📅 26 Agustus 2026</span>
-            <span class="read-time">⏱️ 10 min baca</span>
-        </div>
-        <h3>Peran Paperka dalam Membangun Masyarakat di Padukuhan Kandangan</h3>
-        <p class="excerpt">Paperka (Karang Taruna) merupakan pilar penting dalam menggerakkan roda pembangunan sosial, ekonomi, dan budaya di Padukuhan Kandangan...</p>
-        <button class="btn-read-more read-btn hover-target" data-id="1">Baca Artikel &rarr;</button>
-    </div>
+        <!-- Artikel Utama / Featured Article -->
+        <section class="featured-article">
+            <article class="article-card" data-id="1" data-category="opini">
+                <div class="card-image">
+                    <img src="asset/icon.png" alt="Peran Paperka dalam Membangun Masyarakat di Padukuhan Kandangan" loading="lazy">
+                    <span class="category-tag">Gagasan</span>
+                </div>
+                <div class="card-body">
+                    <div class="article-meta">
+                        <span class="date">📅 26 Agustus 2026</span>
+                        <span class="read-time">⏱️ 10 min baca</span>
+                    </div>
+                    <h3>Peran Paperka dalam Membangun Masyarakat di Padukuhan Kandangan</h3>
+                    <p class="excerpt">Paperka (Karang Taruna) merupakan pilar penting dalam menggerakkan roda pembangunan sosial, ekonomi, dan budaya di Padukuhan Kandangan...</p>
+                    <button class="btn-read-more read-btn hover-target" data-id="1">Baca Artikel &rarr;</button>
+                </div>
             </article>
         </section>
 
@@ -106,27 +106,27 @@
         <section class="article-grid" id="article-grid">
 
             <!-- Kartu Artikel 2 -->
-            <article class="article-card hidden" data-id="2" data-category="desa">
+            <article class="article-card" data-id="2" data-category="desa">
                 <div class="card-image">
                     <img src="asset/icon.png" alt="Potensi Desa" loading="lazy">
-                    <span class="category-tag">Presiden</span>
+                    <span class="category-tag">Potensi Desa</span>
                 </div>
                 <div class="card-body">
                     <div class="article-meta">
                         <span class="date">📅 20 Agustus 2026</span>
                         <span class="read-time">⏱️ 3 min baca</span>
                     </div>
-                    <h3>Kenapa Prabowo adalah monokotil </h3>
+                    <h3>Kenapa Prabowo adalah monokotil</h3>
                     <p class="excerpt">Prabowo Disebut Monokotil karena ....</p>
                     <button class="btn-read-more read-btn hover-target" data-id="2">Baca Artikel &rarr;</button>
                 </div>
             </article>
 
             <!-- Kartu Artikel 3 -->
-            <article class="article-card hidden" data-id="3" data-category="opini">
+            <article class="article-card" data-id="3" data-category="opini">
                 <div class="card-image">
                     <img src="asset/Icon.jpeg" alt="Gagasan Pemuda" loading="lazy">
-                    <span class="category-tag">FireFly My Bini</span>
+                    <span class="category-tag">Gagasan</span>
                 </div>
                 <div class="card-body">
                     <div class="article-meta">
@@ -140,10 +140,10 @@
             </article>
 
             <!-- Kartu Artikel 4 -->
-            <article class="article-card hidden" data-id="4" data-category="kegiatan">
+            <article class="article-card" data-id="4" data-category="kegiatan">
                 <div class="card-image">
                     <img src="asset/Icon.jpeg" alt="Aksi Hijau" loading="lazy">
-                    <span class="category-tag">Bencana</span>
+                    <span class="category-tag">Kegiatan</span>
                 </div>
                 <div class="card-body">
                     <div class="article-meta">
@@ -163,15 +163,11 @@
     <div class="pagination" id="pagination"></div>
 
     <!-- ================= MODAL / JENDELA BACA ARTIKEL LENGKAP ================= -->
-    <div class="article-modal hidden" id="article-modal" aria-hidden="true">
+    <div class="article-modal" id="article-modal" aria-hidden="true">
         <div class="modal-overlay" id="modal-overlay"></div>
         <div class="modal-content">
             <button class="modal-close hover-target" id="modal-close" aria-label="Tutup Artikel">&times;</button>
-            
-            <!-- Isi Artikel Lengkap (Diisi via JavaScript) -->
-            <div class="modal-body" id="modal-body-content">
-                <!-- Template isi artikel akan masuk ke sini -->
-            </div>
+            <div class="modal-body" id="modal-body-content"></div>
         </div>
     </div>
 
@@ -190,8 +186,10 @@
             <p>&copy; 2026 Organisasi Desa Paperka. Dibuat dengan 💚 oleh @Ias_Ryu.</p>
         </div>
     </footer>
+
     <!-- Tombol Back to Top -->
     <button id="backToTop" class="back-to-top hover-target" aria-label="Ke Atas">↑</button>
+
     <!-- Koneksi ke JavaScript -->
     <script src="script.js"></script>
     <script src="scriptartikel.js"></script>
