@@ -333,6 +333,36 @@ body.no-scroll {
     }
 }
 
+/* ==========================================
+   STYLING TEKS CREDIT DI NAVIGASI (SUBTLE)
+   ========================================== */
+.nav-credit-item {
+    margin-top: auto;      /* Mendorong teks ke dasar menu (jika flexbox aktif) */
+    padding: 20px 0 10px;
+    text-align: center;
+    width: 100%;
+}
+
+.nav-credit-text {
+    font-size: 0.75rem;    /* Ukuran teks kecil */
+    opacity: 0.4;          /* Dibuat agak samar agar tidak mencolok */
+    letter-spacing: 0.5px;
+    font-weight: 400;
+    transition: opacity 0.3s ease;
+}
+
+/* Sedikit memperjelas teks saat kursor diarahkan ke atasnya */
+.nav-credit-text:hover {
+    opacity: 0.8;
+}
+
+/* Sembunyikan kredit di tampilan layar laptop/desktop (hanya tampil di menu HP) */
+@media (min-width: 769px) {
+    .nav-credit-item {
+        display: none;
+    }
+}
+
 
 /* ==========================================================================
    4. HALAMAN BERANDA
