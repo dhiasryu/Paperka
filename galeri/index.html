@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Paperka adalah wadah kreativitas, kolaborasi, dan pergerakan pemuda desa Kandangan.">
+    <meta property="og:title" content="Paperka Kandangan">
+    <meta property="og:description" content="Wadah kreativitas, kolaborasi, dan pergerakan pemuda desa Kandangan.">
+    <meta property="og:image" content="https://paperka.my.id/asset/bg.jpg">
+    <meta property="og:type" content="website">
+    <link rel="icon" type="image/png" href="/asset/icon.png">
+
+    <!-- Mengizinkan robot Google mengindeks halaman ini -->
+    <meta name="robots" content="index, follow">
+    <!-- Tautan resmi halaman (sesuaikan domain jika sudah ada/pakai github pages) -->
+    <link rel="canonical" href="https://paperka.my.id/galeri">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri Kegiatan - Paperka</title>
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+
+    <!-- Navigasi -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo">PAPERKA.</a>
+            
+            <div class="menu-toggle" id="mobile-menu" aria-label="Buka Menu Navigasi" role="button" tabindex="0">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
+            <ul class="nav-menu">
+                <li class="nav-logo-item">
+                    <img src="/asset/icon.png" alt="Logo Paperka" class="nav-menu-logo">
+                </li>
+                <li><a href="/" class="nav-links hover-target">Beranda</a></li>
+                <li><a href="/galeri" class="nav-links active hover-target">Galeri Kegiatan</a></li>
+                <li><a href="/artikel" class="nav-links hover-target">Kabar & Gagasan</a></li>
+                <!-- Tombol Switch Dark/Light Mode -->
+                <li>
+                    <button class="theme-toggle-btn hover-target" id="themeToggle" aria-label="Toggle Theme">
+                        <span class="theme-icon">🌙</span>
+                        <span class="theme-text">Dark</span>
+                    </button>
+                </li>
+                <li class="nav-credit-item">
+                    <span class="nav-credit-text">Made by @ias_Ryu</span>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Overlay Backdrop (Efek Blur Belakang Navigasi) -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- Konten Utama: Gallery Dokumentasi -->
+    <main class="page-content">
+        <section class="gallery-section hidden">
+            <div class="page-header">
+                <h1 class="page-title">Momen <span>Paperka</span></h1>
+                <p>Jejak langkah, kolaborasi, dan keseruan kami di desa.</p>
+            </div>
+
+            <!-- Grid Foto -->
+            <div class="gallery-grid">
+    <div class="gallery-item hover-target hidden">
+        <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&fm=webp&q=80" alt="Diskusi Pemuda Balai Desa" loading="lazy">
+        <div class="gallery-overlay">
+            <h3>Diskusi Pemuda</h3>
+            <p>Balai Desa, 2025</p>
+        </div>
+    </div>
+    <div class="gallery-item hover-target hidden">
+        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&fm=webp&q=80" alt="Kerja Bakti Alam" loading="lazy">
+        <div class="gallery-overlay">
+            <h3>Kerja Bakti Alam</h3>
+            <p>Lereng Bukit, 2025</p>
+        </div>
+    </div>
+    <div class="gallery-item hover-target hidden">
+        <img src="https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&fm=webp&q=80" alt="Festival Desa" loading="lazy">
+        <div class="gallery-overlay">
+            <h3>Festival Desa</h3>
+            <p>Lapangan Utama, 2026</p>
+        </div>
+    </div>
+    <div class="gallery-item hover-target hidden">
+        <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&fm=webp&q=80" alt="Program Penghijauan Hutan Desa" loading="lazy">
+        <div class="gallery-overlay">
+            <h3>Program Penghijauan</h3>
+            <p>Hutan Desa, 2026</p>
+        </div>
+    </div>
+</div>
+        </section>
+    </main>
+
+    <!-- Container Paginasi Tambahan -->
+<div class="pagination" id="pagination"></div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-container">
+            <!-- Grid Kolom Footer -->
+            <div class="footer-grid">
+                
+                <!-- Kolom 1: Profil & Deskripsi -->
+                <div class="footer-col footer-brand">
+                    <div class="brand-header">
+                        <img src="/asset/icon.png" alt="Logo Paperka" class="footer-logo hover-target">
+                        <h3 class="brand-title">PAPERKA.</h3>
+                    </div>
+                    <p class="brand-desc">
+                        Wadah kreativitas, kolaborasi, dan pergerakan pemuda Padukuhan Kandangan. Merawat tradisi, menguatkan persaudaraan, dan membangun masa depan desa.
+                    </p>
+                    <span class="motto-badge">Nyawiji lan Migunani Tumraping Liyan</span>
+                </div>
+
+                <!-- Kolom 2: Navigasi Cepat -->
+                <div class="footer-col">
+                    <h4 class="footer-heading">Navigasi</h4>
+                    <ul class="footer-links">
+                        <li><a href="/" class="hover-target">Beranda</a></li>
+                        <li><a href="/galeri" class="hover-target">Galeri Kegiatan</a></li>
+                        <li><a href="/artikel" class="hover-target">Kabar & Gagasan</a></li>
+                        <li><a href="/#lokasi" class="hover-target">Titik Kumpul</a></li>
+                    </ul>
+                </div>
+
+                <!-- Kolom 3: Informasi Wilayah -->
+                <div class="footer-col">
+                    <h4 class="footer-heading">Sekretariat</h4>
+                    <p class="location-text">
+                        📍 Padukuhan Kandangan,<br>
+                        Kalurahan Margodadi, Kapanewon Seyegan,<br>
+                        Kabupaten Sleman, D.I. Yogyakarta
+                    </p>
+                </div>
+
+                <!-- Kolom 4: Media Sosial -->
+                <div class="footer-col">
+                    <h4 class="footer-heading">Terhubung Bersama Kami</h4>
+                    <div class="footer-socials">
+                        <a href="https://www.instagram.com/kandanganpaperka" target="_blank" rel="noopener noreferrer" class="social-btn hover-target" aria-label="Instagram Paperka">
+                            <span class="social-icon">
+                                <img src="/asset/instagram.png" alt="Instagram">
+                            </span>
+                            <span>Instagram</span>
+                        </a>
+                        <a href="https://www.tiktok.com/@paperkakandangan" target="_blank" rel="noopener noreferrer" class="social-btn hover-target" aria-label="TikTok Paperka">
+                            <span class="social-icon">
+                                <img src="/asset/tiktok.png" alt="tiktok">
+                            </span>
+                            <span>TikTok</span>
+                        </a>
+                        <a href="https://youtube.com/@paperkakandangan" target="_blank" rel="noopener noreferrer" class="social-btn hover-target" aria-label="YouTube Paperka">
+                            <span class="social-icon">
+                                <img src="/asset/youtube.png" alt="youtube">
+                            </span>
+                            <span>YouTube</span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bagian Bawah Footer (Copyright & Credit) -->
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 <strong>Organisasi Pemuda Paperka Kandangan</strong>. All rights reserved.</p>
+                <p class="developer-credit">Dibuat dengan 💚 oleh <a href="https://instagram.com/ias_ryu" target="_blank" rel="noopener noreferrer" class="hover-target">@Ias_Ryu</a></p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Tombol Back to Top -->
+    <button id="backToTop" class="back-to-top hover-target" aria-label="Ke Atas">↑</button>
+
+    <!-- Lightbox Modal Foto -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" alt="Dokumentasi Fullscreen">
+        <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+
+    <!-- Script -->
+    <script src="/script.js"></script>
+</body>
+</html>
