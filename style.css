@@ -630,6 +630,36 @@ body.no-scroll {
     visibility: visible;
 }
 
+/* ==========================================
+   STYLING LOGO DI ATAS MENU BERANDA
+   ========================================== */
+.nav-logo-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 10px;
+}
+
+.nav-menu-logo {
+    width: 60px;          /* Ukuran lebar logo (sesuaikan keinginan) */
+    height: 60px;         /* Ukuran tinggi logo */
+    object-fit: contain;  /* Agar rasio gambar tidak melar */
+    border-radius: 50%;   /* Membuat logo melingkar (hapus jika logo sudah transparan/persegi) */
+    transition: transform 0.3s ease;
+}
+
+.nav-menu-logo:hover {
+    transform: scale(1.1); /* Efek membesar halus saat di-hover */
+}
+
+@media (min-width: 769px) {
+    .nav-logo-item {
+        display: none; /* Sembunyikan logo menu di layar laptop jika hanya ingin muncul di menu HP */
+    }
+}
+
+
 /* ==========================================================================
    HALAMAN ARTIKEL (HERO, SEARCH FILTER, GRID & MODAL READER)
    ========================================================================== */
