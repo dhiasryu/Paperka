@@ -178,20 +178,46 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function scrollToArticles() {
-    const hero = document.querySelector('.article-hero');
-    if (!hero) return;
+    const target = document.querySelector('.article-hero');
+    if (!target) return;
 
-    // Hitung posisi pasti bagian atas Hero Section
-    const targetPosition = hero.offsetTop;
+    // 1. Lepaskan fokus dari tombol paginasi yang baru diklik agar tidak memicu reset scroll browser
+    if (document.activeElement) {
+        document.activeElement.blur();
+    }
 
-    // Berikan sedikit jeda mikro (20ms) agar browser selesai merender perubahan artikel
-    setTimeout(() => {
-        window.scrollTo({
-            top: targetPosition,
-            behavior: 'smooth'
-        });
-    }, 20);
+    // 2. Hitung posisi tujuan (dikurangi tinggi navbar agar header tidak tertutup menu)
+    const navbar = document.querySelector('.navbar');
+    const navbarHeight = navbar ? navbar.offsetHeight : 0;
+    const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+    
+    const startPosition = window.pageYOffset;
+    const distance = targetPosition - startPosition;
+    const duration = 500; // Durasi animasi dalam milidetik (0.5 detik)
+    let startTime = null;
+
+    // 3. Fungsi animasi matematika (Ease Out)
+    function animationStep(currentTime) {
+        if (!startTime) startTime = currentTime;
+        const timeElapsed = currentTime - startTime;
+        const progress = Math.min(timeElapsed / duration, 1);
+
+        // Rumus Easing (Membuat gerakan terasa mulus melambat di akhir)
+        const ease = 1 - Math.pow(1 - progress, 3);
+
+        window.scrollTo(0, startPosition + (distance * ease));
+
+        // Lanjutkan frame animasi jika belum selesai
+        if (progress < 1) {
+            requestAnimationFrame(animationStep);
+        }
+    }
+
+    // 4. Jalankan animasi gulir
+    requestAnimationFrame(animationStep);
 }
+
+    
     const searchInput = document.getElementById('search-input');
     const filterBtns = document.querySelectorAll('.filter-btn');
 
