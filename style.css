@@ -212,20 +212,18 @@ body {
         max-width: 320px;
         height: 100vh;
         
-        /* Glassmorphism Otomatis Mode Terang & Gelap */
         background: var(--bg-glass-drawer);
         backdrop-filter: blur(20px);
         -webkit-backdrop-filter: blur(20px);
         border-left: 1px solid var(--border-color);
         box-shadow: -15px 0 35px var(--shadow-color);
 
-        /* Tata Letak Kembali ke Tengah Vertikal */
         display: flex;
         flex-direction: column; 
-        justify-content: center; /* Posisikan menu di tengah vertikal */
-        align-items: stretch;
-        padding: 30px 24px;
-        gap: 12px;               /* Jarak antar tombol menu */
+        justify-content: space-between; /* <--- DIUBAH: Membagi ruang atas, tengah, dan bawah */
+        align-items: center;
+        padding: 40px 24px 20px;        /* Jarak napas atas & bawah */
+        gap: 8px;
         
         transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         z-index: 1010 !important;
@@ -312,24 +310,25 @@ body.no-scroll {
     justify-content: center;
     align-items: center;
     width: 100%;
+    margin-bottom: auto;  /* <--- TAMBAHKAN INI: Mendorong menu utama turun ke tengah */
     padding-bottom: 10px;
 }
 
 .nav-menu-logo {
-    width: 60px;          /* Ukuran lebar logo (sesuaikan keinginan) */
-    height: 60px;         /* Ukuran tinggi logo */
-    object-fit: contain;  /* Agar rasio gambar tidak melar */
-    border-radius: 50%;   /* Membuat logo melingkar (hapus jika logo sudah transparan/persegi) */
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border-radius: 50%;
     transition: transform 0.3s ease;
 }
 
 .nav-menu-logo:hover {
-    transform: scale(1.1); /* Efek membesar halus saat di-hover */
+    transform: scale(1.1);
 }
 
 @media (min-width: 769px) {
     .nav-logo-item {
-        display: none; /* Sembunyikan logo menu di layar laptop jika hanya ingin muncul di menu HP */
+        display: none;
     }
 }
 
@@ -337,26 +336,24 @@ body.no-scroll {
    STYLING TEKS CREDIT DI NAVIGASI (SUBTLE)
    ========================================== */
 .nav-credit-item {
-    margin-top: auto;      /* Mendorong teks ke dasar menu (jika flexbox aktif) */
-    padding: 20px 0 10px;
+    margin-top: auto;      /* <--- Mendorong teks tahan di paling bawah */
+    padding: 15px 0 5px;
     text-align: center;
     width: 100%;
 }
 
 .nav-credit-text {
-    font-size: 0.75rem;    /* Ukuran teks kecil */
-    opacity: 0.4;          /* Dibuat agak samar agar tidak mencolok */
+    font-size: 0.75rem;
+    opacity: 0.4;
     letter-spacing: 0.5px;
     font-weight: 400;
     transition: opacity 0.3s ease;
 }
 
-/* Sedikit memperjelas teks saat kursor diarahkan ke atasnya */
 .nav-credit-text:hover {
     opacity: 0.8;
 }
 
-/* Sembunyikan kredit di tampilan layar laptop/desktop (hanya tampil di menu HP) */
 @media (min-width: 769px) {
     .nav-credit-item {
         display: none;
