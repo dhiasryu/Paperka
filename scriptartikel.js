@@ -178,11 +178,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function scrollToArticles() {
-        const target = document.querySelector('.article-container');
-        if (target) {
-            target.scrollIntoView({ behavior: 'smooth',block: 'start' });
-        }
+    const target = document.querySelector('.article-hero'); // Arahkan langsung ke Hero Section
+    if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
     }
+}
 
     const searchInput = document.getElementById('search-input');
     const filterBtns = document.querySelectorAll('.filter-btn');
