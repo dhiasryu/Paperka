@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function scrollToArticles() {
-    const target = document.querySelector('.category-buttons'); // Arahkan langsung ke Hero Section
+    const target = document.querySelector('.article-grid'); // Arahkan langsung ke Hero Section
     if (target) {
         target.scrollIntoView({ behavior: 'smooth' });
     }
