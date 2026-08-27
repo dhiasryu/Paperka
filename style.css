@@ -576,27 +576,216 @@ main {
 
 
 /* ==========================================================================
-   6. FOOTER
+   6. FOOTER (MODERN & RESPONSIVE WITH DARK/LIGHT THEME)
    ========================================================================== */
 
-/* --- FOOTER --- */
-footer {
+.site-footer {
     background: var(--bg-card);
     border-top: 1px solid var(--border-color);
     color: var(--text-main);
-    text-align: center;
-    padding: 4rem 5% 2rem;
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
+    padding: 5rem 5% 2rem;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    box-shadow: 0 -10px 40px var(--shadow-color);
+    transition: background-color 0.4s ease, border-color 0.4s ease, color 0.4s ease;
 }
 
-.footer-content h3 { font-size: 2.5rem; margin-bottom: 1rem; font-weight: 900; color: var(--primary); }
-.social-links { margin: 2rem 0; }
-.social-links a { color: var(--text-main); text-decoration: none; margin: 0 15px; font-weight: 600; font-size: 1.1rem; transition: color 0.3s; }
-.social-links a:hover { color: var(--primary); }
-.footer-bottom { margin-top: 3rem; font-size: 0.9rem; color: var(--text-muted); }
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
+/* Grid Utam Footer */
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr 1.2fr 1.2fr;
+    gap: 40px;
+    margin-bottom: 4rem;
+}
 
+/* Kolom Brand / Logo */
+.brand-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 1.2rem;
+}
+
+.footer-logo {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.footer-logo:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.brand-title {
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--primary);
+    letter-spacing: -0.5px;
+}
+
+.brand-desc {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin-bottom: 1.2rem;
+}
+
+.motto-badge {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--primary-light);
+    background: var(--border-color);
+    padding: 6px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+}
+
+/* Sub-Judul Kolom */
+.footer-heading {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: var(--text-main);
+    margin-bottom: 1.4rem;
+    position: relative;
+}
+
+.footer-heading::after {
+    content: '';
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: var(--primary);
+    border-radius: 2px;
+    margin-top: 6px;
+}
+
+/* Navigasi Footer */
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    color: var(--primary);
+    transform: translateX(5px);
+}
+
+/* Teks Sekretariat / Lokasi */
+.location-text {
+    font-size: 0.93rem;
+    line-height: 1.7;
+    color: var(--text-muted);
+    font-style: normal;
+}
+
+/* Tombol Media Sosial (Pills) */
+.footer-socials {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    background: var(--bg-main);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.social-btn:hover {
+    background: var(--primary);
+    color: var(--white);
+    border-color: var(--primary);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(97, 129, 108, 0.3);
+}
+
+.social-icon {
+    font-size: 1.1rem;
+}
+
+/* Bottom Bar (Copyright & Credit) */
+.footer-bottom {
+    border-top: 1px solid var(--border-color);
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+}
+
+.developer-credit a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 700;
+    transition: opacity 0.3s ease;
+}
+
+.developer-credit a:hover {
+    opacity: 0.8;
+    text-decoration: underline;
+}
+
+/* --- RESPONSIVE FOOTER UNTUK LAYAR TABLET & HP --- */
+@media screen and (max-width: 992px) {
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 35px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .site-footer {
+        padding: 4rem 6% 2rem;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        margin-bottom: 2.5rem;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+       }
 /* ==========================================================================
    7. HALAMAN DOKUMENTASI
    (Grid galeri dokumentasi & lightbox modal untuk memperbesar gambar)
