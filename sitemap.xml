@@ -5,11 +5,11 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://paperka.my.id/dokumentasi.html</loc>
+    <loc>https://paperka.my.id/galeri</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://paperka.my.id/artikel.html</loc>
+    <loc>https://paperka.my.id/artikel</loc>
     <priority>0.8</priority>
   </url>
 </urlset>
