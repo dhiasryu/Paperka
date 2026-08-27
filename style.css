@@ -730,8 +730,21 @@ main {
     box-shadow: 0 6px 16px rgba(97, 129, 108, 0.3);
 }
 
+/* Container Ikon Media Sosial */
 .social-icon {
-    font-size: 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;  /* Batas lebar ikon */
+    height: 20px; /* Batas tinggi ikon */
+    flex-shrink: 0;
+}
+
+/* Gambar Logo PNG di Dalam Ikon */
+.social-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Agar rasio logo tidak melar */
 }
 
 /* Bottom Bar (Copyright & Credit) */
