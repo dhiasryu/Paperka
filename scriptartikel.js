@@ -178,12 +178,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function scrollToArticles() {
-    const target = document.querySelector('.article-hero'); // Arahkan langsung ke Hero Section
-    if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
-    }
-}
+    const hero = document.querySelector('.article-hero');
+    if (!hero) return;
 
+    // Hitung posisi pasti bagian atas Hero Section
+    const targetPosition = hero.offsetTop;
+
+    // Berikan sedikit jeda mikro (20ms) agar browser selesai merender perubahan artikel
+    setTimeout(() => {
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
+    }, 20);
+}
     const searchInput = document.getElementById('search-input');
     const filterBtns = document.querySelectorAll('.filter-btn');
 
