@@ -1,15 +1,3 @@
-/* ==========================================================================
-   DAFTAR ISI (untuk memudahkan pencarian)
-   1. Variabel Tema & System Reset
-   2. Custom Cursor
-   3. Navbar & Menu Mobile
-   4. Halaman Beranda (Hero, Marquee, About/Location, Logo & CTA)
-   5. Utilitas Umum (Animasi Scroll, Tombol Back to Top)
-   6. Footer
-   7. Halaman Dokumentasi (Grid Galeri & Lightbox)
-   8. Halaman Artikel (Hero, Filter, Grid, Modal, Paginasi, Animasi)
-   ========================================================================== */
-
 /* --- VARIABEL TEMA & SYSTEM RESET --- */
 
 :root {
@@ -50,6 +38,22 @@
     box-sizing: border-box;
     font-family: 'Plus Jakarta Sans', sans-serif;
     cursor: none;
+}
+
+/* --- FOCUS VISIBLE (Aksesibilitas Keyboard) --- */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+.hover-target:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+    border-radius: 4px;
+}
+
+/* Cegah outline muncul saat diklik mouse (hanya muncul saat navigasi keyboard) */
+a:focus:not(:focus-visible),
+button:focus:not(:focus-visible) {
+    outline: none;
 }
 
 html {
