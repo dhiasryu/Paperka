@@ -235,9 +235,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
             <div class="share-bar">
                 <span class="share-label">Bagikan:</span>
-                <a class="share-btn share-wa hover-target" target="_blank" rel="noopener noreferrer"
+                <a class="social-btn share-wa hover-target" target="_blank" rel="noopener noreferrer"
                    href="https://wa.me/?text=${encodeURIComponent(article.title + ' - ' + shareUrl)}">
-                    📱 WhatsApp
+                    <span class="social-icon">
+                         <img src="/asset/wa.png" alt="whatsapp">
+                    </span>
                 </a>
                 <button class="share-btn share-copy hover-target" data-share-url="${shareUrl}">
                     🔗 Salin Link
