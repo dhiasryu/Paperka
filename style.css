@@ -211,7 +211,8 @@ body {
     .nav-menu {
         position: fixed; 
         top: 0; 
-        right: -100%; 
+        right: 0; 
+        transform: translateX(100%);
         width: 70%;
         min-width: 260px;
         max-width: 320px;
@@ -223,26 +224,40 @@ body {
         border-left: 1px solid var(--border-color);
         box-shadow: -15px 0 35px var(--shadow-color);
 
-        /* SATUKAN SELURUH ELEMEN DI TENGAH-TENGAH LAYAR */
         display: flex;
         flex-direction: column; 
-        justify-content: center; /* Posisikan seluruh grup menu di tengah vertikal */
+        justify-content: center;
         align-items: center;
         padding: 30px 24px;
-        gap: 6px;                /* Jarak antar elemen */
+        gap: 6px;
         
-        transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        will-change: transform;
         z-index: 1010 !important;
     }
     
     .nav-menu.active { 
-        right: 0; 
+        transform: translateX(0);
     }
 
     .nav-menu li {
         width: 100%;
         list-style: none;
+        opacity: 0;
+        transform: translateX(15px);
+        transition: opacity 0.35s ease, transform 0.35s ease;
     }
+
+    .nav-menu.active li {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    .nav-menu.active li:nth-child(1) { transition-delay: 0.05s; }
+    .nav-menu.active li:nth-child(2) { transition-delay: 0.1s; }
+    .nav-menu.active li:nth-child(3) { transition-delay: 0.15s; }
+    .nav-menu.active li:nth-child(4) { transition-delay: 0.2s; }
+    .nav-menu.active li:nth-child(5) { transition-delay: 0.25s; }
 
     /* Styling Tombol Menu */
     .nav-links { 
