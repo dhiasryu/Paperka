@@ -180,9 +180,50 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalClose = document.getElementById('modal-close');
     const modalOverlay = document.getElementById('modal-overlay');
 
+    function renderRelatedArticles(currentArticle) {
+        const related = articlesData
+            .filter(a => a.category === currentArticle.category && a.id !== currentArticle.id)
+            .slice(0, 3);
+
+        if (related.length === 0) return '';
+
+        const cards = related.map(a => `
+            <button class="related-card hover-target" data-id="${a.id}">
+                <img src="${a.image}" alt="${a.title}" loading="lazy">
+                <div class="related-card-body">
+                    <span class="related-card-category">${a.category}</span>
+                    <h4>${a.title}</h4>
+                </div>
+            </button>
+        `).join('');
+
+        return `
+            <div class="related-articles">
+                <h3 class="related-title">Artikel Terkait</h3>
+                <div class="related-grid">${cards}</div>
+            </div>
+        `;
+    }
+
+    function showToast(message) {
+        let toast = document.getElementById('paperka-toast');
+        if (!toast) {
+            toast = document.createElement('div');
+            toast.id = 'paperka-toast';
+            toast.className = 'toast';
+            document.body.appendChild(toast);
+        }
+        toast.textContent = message;
+        toast.classList.add('show');
+        clearTimeout(toast._timeout);
+        toast._timeout = setTimeout(() => toast.classList.remove('show'), 2500);
+    }
+
     function openArticle(id) {
         const article = articlesData.find(item => item.id === parseInt(id));
         if (!article || !modal || !modalContent) return;
+
+        const shareUrl = `${window.location.origin}${window.location.pathname}#artikel-${article.id}`;
 
         modalContent.innerHTML = `
             <div class="article-meta">
@@ -191,19 +232,37 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <h1>${article.title}</h1>
             <img src="${article.image}" alt="${article.title}" class="modal-hero-img">
+
+            <div class="share-bar">
+                <span class="share-label">Bagikan:</span>
+                <a class="share-btn share-wa hover-target" target="_blank" rel="noopener noreferrer"
+                   href="https://wa.me/?text=${encodeURIComponent(article.title + ' - ' + shareUrl)}">
+                    📱 WhatsApp
+                </a>
+                <button class="share-btn share-copy hover-target" data-share-url="${shareUrl}">
+                    🔗 Salin Link
+                </button>
+            </div>
+
             <div class="article-full-text">
                 ${article.content}
             </div>
+
+            ${renderRelatedArticles(article)}
         `;
 
         modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
+        history.replaceState(null, '', `#artikel-${article.id}`);
     }
 
     function closeModal() {
         if (!modal) return;
         modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = 'auto';
+        history.replaceState(null, '', window.location.pathname);
     }
 
     if (modalClose) modalClose.addEventListener('click', closeModal);
@@ -214,9 +273,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     document.addEventListener('click', (e) => {
-        if (e.target.classList.contains('read-btn')) {
-            const articleId = e.target.getAttribute('data-id');
-            openArticle(articleId);
+        const readBtn = e.target.closest('.read-btn');
+        if (readBtn) {
+            openArticle(readBtn.getAttribute('data-id'));
+            return;
+        }
+
+        const relatedCard = e.target.closest('.related-card');
+        if (relatedCard) {
+            openArticle(relatedCard.getAttribute('data-id'));
+            return;
+        }
+
+        const copyBtn = e.target.closest('.share-copy');
+        if (copyBtn) {
+            const url = copyBtn.getAttribute('data-share-url');
+            navigator.clipboard.writeText(url)
+                .then(() => showToast('Link disalin!'))
+                .catch(() => showToast('Gagal menyalin link'));
         }
     });
+
+    // Buka artikel otomatis kalau ada hash link (misal dari link yang di-share)
+    const hashMatch = window.location.hash.match(/^#artikel-(\d+)$/);
+    if (hashMatch) {
+        openArticle(hashMatch[1]);
+    }
 });
