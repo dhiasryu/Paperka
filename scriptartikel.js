@@ -74,12 +74,12 @@ document.addEventListener('DOMContentLoaded', () => {
         prevBtn.textContent = '← Prev';
         prevBtn.disabled = currentPage === 1;
         prevBtn.addEventListener('click', () => {
-            if (currentPage > 1) {
-                currentPage--;
-                scrollToArticles();
-                renderArticles();
-            }
+        if (currentPage > 1) {
+            currentPage--;
+            scrollToArticles(renderArticles);
+        }
         });
+        
         paginationContainer.appendChild(prevBtn);
 
         for (let i = 1; i <= totalPages; i++) {
@@ -88,8 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
             pageBtn.textContent = i;
             pageBtn.addEventListener('click', () => {
                 currentPage = i;
-                scrollToArticles();
-                renderArticles();
+                scrollToArticles(renderArticles);
             });
             paginationContainer.appendChild(pageBtn);
         }
@@ -99,18 +98,17 @@ document.addEventListener('DOMContentLoaded', () => {
         nextBtn.textContent = 'Next →';
         nextBtn.disabled = currentPage === totalPages;
         nextBtn.addEventListener('click', () => {
-            if (currentPage < totalPages) {
-                currentPage++;
-                scrollToArticles();
-                renderArticles();
-            }
+        if (currentPage < totalPages) {
+            currentPage++;
+            scrollToArticles(renderArticles);
+        }
         });
         paginationContainer.appendChild(nextBtn);
     }
 
-    function scrollToArticles() {
+    function scrollToArticles(onComplete) {
     const target = document.querySelector('.article-hero');
-    if (!target) return;
+    if (!target) { if (onComplete) onComplete(); return; }
 
     // 1. Lepaskan fokus dari tombol paginasi yang baru diklik agar tidak memicu reset scroll browser
     if (document.activeElement) {
@@ -141,6 +139,8 @@ document.addEventListener('DOMContentLoaded', () => {
         // Lanjutkan frame animasi jika belum selesai
         if (progress < 1) {
             requestAnimationFrame(animationStep);
+        } else if (onComplete) {
+            onComplete();
         }
     }
 
