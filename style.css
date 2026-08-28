@@ -1399,3 +1399,27 @@ main {
         transform: translateY(0);
     }
     }
+
+/* --- HORMATI PREFERENSI REDUCED MOTION --- */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .marquee-content {
+        animation: none !important;
+    }
+
+    .custom-cursor {
+        display: none !important;
+    }
+
+    html {
+        scroll-behavior: auto;
+    }
+}
