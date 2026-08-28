@@ -1243,18 +1243,19 @@ main {
     position: absolute;
     top: 20px;
     right: 20px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
     background: var(--bg-main);
     border: 1px solid var(--border-color);
-    font-size: 1.3rem; /* Ukuran font disesuaikan agar proporsional */
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
     color: var(--text-main);
-    /* Reset atribut bawaan button agar Flexbox presisi */
-    padding: 0;
-    line-height: 1;
     cursor: pointer;
-    /* Center alignment */
+    padding: 0;
+    
+    /* Kunci Presisi Font Teks */
+    font-size: 1.8rem;
+    line-height: 0;               /* Menghapus spasi bawaan bawah font */
+    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1267,6 +1268,7 @@ main {
     color: var(--white);
     transform: rotate(90deg);
 }
+
 .modal-body {
     color: var(--text-main);
     line-height: 1.8;
