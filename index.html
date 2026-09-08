@@ -2,6 +2,11 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
+    <script>
+        if (location.hostname !== 'paperka.my.id' && location.hostname.endsWith('github.io')) {
+            location.replace('https://paperka.my.id' + location.pathname + location.search + location.hash);
+        }
+    </script>
     <meta name="description" content="Paperka adalah wadah kreativitas, kolaborasi, dan pergerakan pemuda desa Kandangan.">
     <meta property="og:title" content="Paperka Kandangan">
     <meta property="og:description" content="Wadah kreativitas, kolaborasi, dan pergerakan pemuda desa Kandangan.">
